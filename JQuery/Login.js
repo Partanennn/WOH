@@ -19,11 +19,7 @@ $(document).ready(() => {
         
         // Checks if username and password match
         $.get("http://localhost:3001/users/"+user+"/"+pass, function(data, status, jqxhr) {
-            if() {
-
-            } else 
-                $("#login_err_msg").show();
-            
+            $("#section3").val(data);
         });
     });
 });

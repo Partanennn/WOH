@@ -28,13 +28,13 @@ module.exports =
     fetchOneUser: (req, res, next) => {
         var username = req.params.tunnus;
         var password = req.params.salasana;
-        CONNECTION.query('SELECT tunnus, salasana FROM users WHERE tunnus=?, salasana=?', [username, salasana],
+        CONNECTION.query('SELECT tunnus, enimi, snimi, rooli FROM users WHERE tunnus=?, salasana=?', [username, salasana],
             (error, result, fields) => {
                 if(error) {
                     console.log("Error while fetching user and password from user table, reason: " + error);
                     res.json({"status": 500, "error": error, "response": null});
                 } else {
-                    console.log("Succesfully fetched user and password from user table, "+time());
+                    //console.log("Succesfully fetched "+result.tunnus+" from user table, "+time());
                     res.status(200).json(result);
                 }
             }

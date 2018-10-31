@@ -21,6 +21,8 @@ app.route("/users/all")
 app.route("/users/:tunnus")
     .get(controller.fetchOneUser);
 
+
+
 app.listen(port, () => {
     console.log("Server is running at port "+port);
 });

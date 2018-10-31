@@ -33,7 +33,7 @@ module.exports =
                     console.log("Error while fetching user and password from user table, reason: " + error);
                     res.json({"status": 500, "error": error, "response": null});
                 } else {
-                    //console.log("Succesfully fetched "+result.tunnus+" from user table, "+time());
+                    console.log("Succesfully fetched user from user table, "+time());
                     res.status(200).json(result);
                 }
             }

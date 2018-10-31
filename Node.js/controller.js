@@ -19,16 +19,15 @@ module.exports =
                 console.log("Error while trying to get all data from users-table, reason: " + err);
                 res.status(500).json({'status': 'not ok', 'status_text: ': err.sqlMessage });
             } else {
-                console.log("Succesfully fetched all data from users table, clock: "+time());
+                console.log("Succesfully fetched all data from users table, time: "+time());
                 res.status(200).json(result);
             }
         });
     },
     // Fetch user and password from user table "/users/:tunnus/:salasana"
-    fetchOneUser: (req, res, next) => {
+    fetchOneUser: (req, res) => {
         var username = req.params.tunnus;
-        var password = req.params.salasana;
-        CONNECTION.query('SELECT tunnus, enimi, snimi, rooli FROM users WHERE tunnus=?, salasana=?', [username, salasana],
+        CONNECTION.query('SELECT tunnus, salasana, enimi FROM users WHERE tunnus = ?', [username],
             (error, result, fields) => {
                 if(error) {
                     console.log("Error while fetching user and password from user table, reason: " + error);

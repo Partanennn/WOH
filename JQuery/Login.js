@@ -18,8 +18,13 @@ $(document).ready(() => {
         }
         
         // Checks if username and password match
-        $.get("http://localhost:3001/users/"+user+"/"+pass, function(data, status, jqxhr) {
-            $("#section3").val(data);
-        });
+        $.get("http://localhost:3001/users/"+user)
+            .done( (data, textstatus, jqXHR) => {
+                if(data[0].salasana == pass)
+                    window.location.href = 'etusivu.html';
+                else {
+                    alert("Väärä tunnus tai salasana!!");
+                }
+            });
     });
 });

@@ -17,14 +17,18 @@ $(document).ready(() => {
             alert("Ole hyvä ja syötä salasana..!!");
         }
         
-        // Checks if username and password match
-        $.get("http://localhost:3001/users/"+user)
-            .done( (data, textstatus, jqXHR) => {
-                if(data[0].salasana == pass)
-                    window.location.href = 'etusivu.html';
-                else {
-                    alert("Väärä tunnus tai salasana!!");
-                }
-            });
+        if(pass != "") {
+            // Checks if username and password match
+            $.get("http://localhost:3001/users/"+user)
+                .done( (data, textstatus, jqXHR) => {
+                    if(data[0].salasana == pass) {
+                        sessionStorage['login_enimi'] = data[0].enimi;
+                        window.location.href = 'etusivu.html';
+                    }
+                    else {
+                        alert("Väärä tunnus tai salasana!!");
+                    }
+                });
+        }
     });
 });

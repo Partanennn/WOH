@@ -51,25 +51,19 @@ body {
 }
 
 #register_form label{
-    position: absolute;
-    margin-top: 1em;
+
 }
 
 #register_form select {
-    margin-left: 8em;
-    margin-top: 1em;
-    width: 11em;
+
 }
 
 #register_form input {
-    margin-left: 8em;
-    margin-top: 1em;
+
 }
 
 #reg_button {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 3em;
+
 }
 
 #login {

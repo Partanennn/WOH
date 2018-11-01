@@ -5,23 +5,35 @@ USE harkka;
 
 CREATE TABLE harkka.users
 (
-    tunnus varChar(10) NOT NULL PRIMARY KEY,
-    salasana varChar(20) NOT NULL,
-    enimi varChar(40) NOT NULL,
-    snimi varChar(40) NOT NULL,
-    postitoimipaikka varChar(20),
-    katuosoite varChar(50),
-    rooli varChar(5) DEFAULT 'user'
+    username varChar(10) NOT NULL PRIMARY KEY,
+    password varChar(20) NOT NULL,
+    name varChar(40) NOT NULL,
+    address varChar(50),
+    city varChar(20),
+    role varChar(20) DEFAULT 'user',
+    logged BOOLEAN DEFAULT 0
 )
-
 ENGINE = InnoDB;
 
-CREATE TABLE harkka.tila
+CREATE TABLE harkka.states
 (
-    users_tunnus varChar(10) NOT NULL PRIMARY KEY,
-    onko_kirjautunut BOOLEAN DEFAULT 0,
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    status varChar(20) NOT NULL
+)
+ENGINE = InnoDB;
 
-    CONSTRAINT tila_users_tunnus_fk FOREIGN KEY (users_tunnus) REFERENCES users(tunnus)
+CREATE TABLE harkka.workorders
+(
+    id NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_username varChar(20) NOT NULL,
+    address varChar(50) NOT NULL,
+    city varChar(20) NOT NULL,
+    start_time DATE NOT NULL,
+    end_time DATE NOT NULL,
+    description varChar(200),
+    status varChar(20),
+    price DECIMAL(7, 2), --Jos saa arvon 0,01, niin se on tarjouspyyntö
+    CONSTRAINT workorders_orderUsername_users_fk FOREIGN KEY (order_username) REFERENCES users(username)
 )
 ENGINE = InnoDB;
 /*
@@ -33,8 +45,17 @@ CREATE TABLE harkka.posti
 ENGINE = InnoDB;
 */
 
+INSERT INTO states (status) VALUES("TILATTU");
+INSERT INTO states (status) VALUES("ALOITETTU");
+INSERT INTO states (status) VALUES("VALMIS");
+INSERT INTO states (status) VALUES("HYVÄKSYTTY");
+INSERT INTO states (status) VALUES("HYLÄTTY");
+INSERT INTO states (status) VALUES("VASTATTU");
+INSERT INTO states (status) VALUES("TARJOUS");
+INSERT INTO users(username, password, name, city, address, role) VALUES('admin', 'admin', 'Super Jumala', 'Taivas', 'Jumalainentie 1', 'admin');
+INSERT INTO users(username, password, name, city, address) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Kuopio', 'Minna Canthin katu 1');
+INSERT INTO users(username, password, name, city, address) VALUES('moi123', 'moi1', 'Jonne Jokunen', 'Helsinki', 'Mannerheiminkatu 23');
+INSERT INTO users(username, password, name, city, address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Iisalmi', 'Pohjolankatu 43');
+INSERT INTO users(username, password, name, city, address, role) VALUES('ISS', '1234', 'ISS Oy', 'Kuopio', 'Kaivotie 23', 'Corporation');
 
-INSERT INTO users VALUES('admin', 'admin', 'Super', 'Jumala', 'Taivas', 'Jumalainentie 1', 'admin');
-INSERT INTO users (tunnus, salasana, enimi, snimi, postitoimipaikka, katuosoite) VALUES('Aleksi1', 'Aleksi2', 'Aleksi', 'Partanen', 'Kuopio', 'Minna Canthin katu 1');
-INSERT INTO users (tunnus, salasana, enimi, snimi, postitoimipaikka, katuosoite) VALUES('moi123', 'moi1', 'Jonne', 'Jokunen', 'Helsinki', 'Mannerheiminkatu 23');
-INSERT INTO users (tunnus, salasana, enimi, snimi, postitoimipaikka, katuosoite) VALUES('Super23456', 'SuperPassword123', 'Jorma', 'Penttinen', 'Iisalmi', 'Pohjolankatu 43');
+

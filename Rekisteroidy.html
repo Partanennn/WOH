@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="index.css">
+    <!--Bootstrap css-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--React scripts-->
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     
     <!--JQuery scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -29,21 +30,19 @@
     </noscript>
     <div id="grid">
 
-        <div id="nav">
-            <ul>
+        <div id="header">
+            <ul id="nav">
                 <li><a class="current" href="Rekisteroidy.html">Etusivu</a></li>
             </ul>
             
         </div>
 
         <div id="section"><br><br>
-            <h2>Jos et ole vielä rekisteröitynyt niin tee se nyt</h2><br><br>
+            <h2>Jos et ole vielä rekisteröitynyt niin tee se alla</h2><br><br>
             <form id="register_form">
                 <div class="form-group">
-                    <label for="forename_reg">Etunimi:</label>
-                    <input type="text" name="forename_reg" id="forename_reg" placeholder="Etunimi"><br>
-                    <label for="surename_reg">Sukunimi:</label>
-                    <input type="text" name="surename_reg" id="surename_reg" placeholder="Sukunimi"><br>
+                    <label for="name_reg">Nimi:</label>
+                    <input type="text" name="name_reg" id="name_reg" placeholder="Nimi"><br>
                     <label for="username_reg">Tunnus:</label>
                     <input type="text" name="username_reg" id="username_reg" placeholder="Tunnus"><br>
                     <label for="password_reg">Salasana:</label>
@@ -54,25 +53,25 @@
                     <input type="text" name="postoffice_reg" id="postoffice_reg" placeholder="Postitoimipaikka"><br>
                     <label for="address_reg">Katuosoite:</label>
                     <input type="text" name="address_reg" id="address_reg" placeholder="Katuosoite"><br>
-                    <select>
-                        <option>asiakas</option>
-                        <option>yritys</option>
-                        <option>joku muu</option>
-                    </select>
+                    <label for="reg_select">Oletko:</label>
+                    <select id="reg_select">
+                        <option>Yksityinen</option>
+                        <option>Yritys</option>
+                    </select><br>
                 </div>
             </form>
             <button name="reg_button" id="reg_button">Rekisteröidy</button>
         </div>
 
-        <div id="login">
-            <form id="login_form" action="" method="POST">
-                <label for="username_login">Tunnus:</label>
-                <input type="text" name="username_login" id="username_login" placeholder="Tunnus"><br>
-                <label for="password_login">Salasana:</label>
-                <input type="password" name="password_login" id="password_login" placeholder="Salasana"><br>
+        <div id="login" class="form-row">
+            <form id="login_form" class="form" action="" method="POST">
+                <label for="username_login" class="mr-sm-2">Tunnus:</label>
+                <input type="text" class ="form-control mb-2 mr-sm-2" name="username_login" id="username_login" placeholder="Tunnus"><br>
+                <label for="password_login" class="mr-sm-2">Salasana:</label>
+                <input type="password" class="form-control mb-2 mr-sm-2" name="password_login" id="password_login" placeholder="Salasana"><br>
             </form>
+            <button type="submit" name="login_button" class="btn btn-primary" id="login_button">Kirjaudu</button>
             <p hidden id="login_err_msg">Salasana tai tunnus ei täsmää</p>
-            <button name="login_button" id="login_button">Kirjaudu</button>
         </div>
 
         <div id="section2" class="panel-info">
@@ -80,9 +79,9 @@
             <p id="section3"></p>
         </div>
 
-        <div id="footer" class="panel-footer">
+        <footer id="footer" class="panel-footer">
             <h1>Footer</h1>
-        </div>
+        </footer>
         
     </div>
 </body>

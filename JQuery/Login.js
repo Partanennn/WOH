@@ -21,11 +21,10 @@ $(document).ready(() => {
             // Checks if username and password match
             $.get("http://localhost:3001/users/"+user)
                 .done( (data, textstatus, jqXHR) => {
-                    if(data[0].salasana == pass) {
-                        sessionStorage['login_enimi'] = data[0].enimi;
+                    if(data[0].password == pass) {
+                        sessionStorage['login_enimi'] = data[0].nimi;
                         window.location.href = 'etusivu.html';
-                    }
-                    else {
+                    } else {
                         alert("Väärä tunnus tai salasana!!");
                     }
                 });

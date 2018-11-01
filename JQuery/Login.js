@@ -11,13 +11,13 @@ $(document).ready(() => {
             alert("Ole hyvä ja täytä kaikki kentät..!!");
         } else if(user == '') {
             $('input[id="username_login"]').css("border", "2px solid red");
+            $('input[id="password_login"]').css("border", "none");
             alert("Ole hyvä ja syötä tunnus..!!");
         } else if(pass == '') {
+            $('input[id="username_login"]').css("border", "none");
             $('input[id="password_login"]').css("border", "2px solid red");
             alert("Ole hyvä ja syötä salasana..!!");
-        }
-        
-        if(pass != "") {
+        } else {
             // Checks if username and password match
             $.get("http://localhost:3001/users/"+user)
                 .done( (data, textstatus, jqXHR) => {

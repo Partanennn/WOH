@@ -27,7 +27,7 @@ module.exports =
     // Fetch user and password from user table "/users/:tunnus/:salasana"
     fetchOneUser: (req, res) => {
         var username = req.params.tunnus;
-        CONNECTION.query('SELECT * FROM users WHERE tunnus = ?', [username],
+        CONNECTION.query('SELECT * FROM users WHERE username = ?', [username],
             (error, result, fields) => {
                 if(error) {
                     console.log("Error while fetching user and password from user table, reason: " + error);

@@ -18,6 +18,9 @@ $(document).ready(() => {
             $('input[id="password_login"]').css("border", "2px solid red");
             alert("Ole hyvä ja syötä salasana..!!");
         } else {
+            $('input[id="username_login"]').css("border", "none");
+            $('input[id="password_login"]').css("border", "none");
+            
             // Checks if username and password match
             $.get("http://localhost:3001/users/"+user)
                 .done( (data, textstatus, jqXHR) => {

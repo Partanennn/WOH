@@ -1,7 +1,5 @@
 $(document).ready(() => {
     $("#login_button").click(() => {
-        $("#login_err_msg").show();
-
         var user = $("#username_login").val();
         var pass = $("#password_login").val();
         
@@ -24,12 +22,15 @@ $(document).ready(() => {
             // Checks if username and password match
             $.get("http://localhost:3001/users/"+user)
                 .done( (data, textstatus, jqXHR) => {
-                    if(data[0].password == pass) {
+                    if(data[0].salasana == pass) {
                         sessionStorage['login_enimi'] = data[0].nimi;
                         window.location.href = 'etusivu.html';
                     } else {
                         alert("Väärä tunnus tai salasana!!");
                     }
+                })
+                .fail( (error) => {
+                    alert("Virhe haettaessa tietoja, err: "+error);
                 });
         }
     });

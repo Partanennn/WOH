@@ -27,7 +27,7 @@ module.exports =
     // Fetch user and password from user table "/users/:tunnus/:salasana"
     fetchOneUser: (req, res) => {
         var username = req.params.tunnus;
-        CONNECTION.query('SELECT * FROM users WHERE tunnus = ?', [username],
+        CONNECTION.query('SELECT * FROM users WHERE username = ?', [username],
             (error, result, fields) => {
                 if(error) {
                     console.log("Error while fetching user and password from user table, reason: " + error);
@@ -35,6 +35,23 @@ module.exports =
                 } else {
                     console.log("Succesfully fetched user from user table, "+time());
                     res.status(200).json(result);
+                }
+            }
+        );
+    },
+
+    addUser: (req, res) => {
+        console.log("Body: " + JSON.stringify(req.body));
+        let v = req.body;
+
+        CONNECTION.query('INSERT INTO users (username, password, name, address, city, role) VALUES (?, ?, ?, ?, ?, ?)', [v.username_reg, v.password_reg, v.name_reg, v.address_reg, v.city_reg, v.select_reg],
+            (err, results, fields) => {
+                if(err) {
+                    console.log("Error while tried to add new user to users table, reason: "+err);
+                    res.json(error);
+                } else {
+                    console.log("New user added to table users: "+JSON.stringify(results));
+                    res.statusCode = 201;
                 }
             }
         );

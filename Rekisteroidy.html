@@ -19,8 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-
+    
     <script src="JQuery/Login.js"></script>
+    <script src="JQuery/Register.js"></script>
     <title>Harkkatyö</title>
 </head>
 
@@ -38,23 +39,24 @@
         </div>
 
         <div id="section"><br><br>
-            <h2>Jos et ole vielä rekisteröitynyt niin tee se alla</h2><br><br>
+            <h2>Jos et ole vielä rekisteröitynyt niin tee se alla</h2><br>
+            <h4>Tähdellä(*) merkityt kohdat ovat pakollisia</h4><br>
             <div class="form-row">
                 <form class="login_form" id="register_form">
-                    <label for="name_reg" class="mr-sm-2">Nimi:</label>
-                    <input type="text" class="form-control mr-sm-2" name="name_reg" id="name_reg" placeholder="Nimi"><br>
-                    <label for="username_reg" class="mr-sm-2">Tunnus:</label>
-                    <input type="text" class="form-control mr-sm-2" name="username_reg" id="username_reg" placeholder="Tunnus"><br>
-                    <label for="password_reg" class="mr-sm-2">Salasana:</label>
-                    <input type="password" class="form-control mr-sm-2" name="password_reg" id="password_reg" placeholder="Max 20 merkkiä"><br>
-                    <label for="password2_reg" class="mr-sm-2">Salasana uudestaan:</label>
-                    <input type="password" class="form-control mr-sm-2" name="password2_reg" id="password2_reg" placeholder="Anna salasana uudestaan"><br>
+                    <label for="name_reg" class="mr-sm-2">*Nimi:</label>
+                    <input type="text" class="form-control mr-sm-2" name="name_reg" id="name_reg" placeholder="Nimi" maxlength="40"><br>
+                    <label for="username_reg" class="mr-sm-2">*Tunnus:</label>
+                    <input type="text" class="form-control mr-sm-2" name="username_reg" id="username_reg" placeholder="Tunnus" maxlength="10"><br>
+                    <label for="password_reg" class="mr-sm-2">*Salasana:</label>
+                    <input type="password" class="form-control mr-sm-2" name="password_reg" id="password_reg" placeholder="Max 20 merkkiä" maxlength="20"><br>
+                    <label for="password2_reg" class="mr-sm-2">*Salasana uudestaan:</label>
+                    <input type="password" class="form-control mr-sm-2" name="password2_reg" id="password2_reg" placeholder="Anna salasana uudestaan" maxlength="20"><br>
                     <label for="address_reg" class="mr-sm-2">Katuosoite:</label>
-                    <input type="text" class="form-control mr-sm-2" name="address_reg" id="address_reg" placeholder="Katuosoite"><br>
+                    <input type="text" class="form-control mr-sm-2" name="address_reg" id="address_reg" placeholder="Katuosoite" maxlength="50"><br>
                     <label for="reg_select" class="mr-sm-2">Oletko:</label>
-                    <select id="reg_select" class="form-control">
-                        <option>Yksityinen</option>
-                        <option>Yritys</option>
+                    <select id="reg_select" name="select_reg" class="form-control">
+                        <option value="user">Yksityinen</option>
+                        <option value="corporation">Yritys</option>
                     </select><br>
                 </form>
                 <button name="reg_button" class="btn btn-primary" id="reg_button">Rekisteröidy</button>

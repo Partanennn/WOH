@@ -8,7 +8,14 @@ $(() => {
         var role = $("#reg_select").val();  // 0=Yksityinen, 1=yritys
 
         var addons = $("#register_form").serialize();
-
-        $.post("http://localhost:3001/create_user", addons);
+        if
+        $.post(
+            "http://localhost:3001/create_user", addons
+        ).done ((data, status, jqxhr) => {
+            console.log("Data: "+data+"\n status: "+status+"\n jqxhr: "+jqxhr);
+            alert("Rekisteröinti onnistui!");
+        }).fail((jqxhr, status, error) => {
+            console.log("status= "+status+", error: "+error);
+        });
     });
 });

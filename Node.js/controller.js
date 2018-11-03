@@ -47,10 +47,10 @@ module.exports =
         CONNECTION.query('INSERT INTO users (username, password, name, address, city, role) VALUES (?, ?, ?, ?, ?, ?)', [v.username_reg, v.password_reg, v.name_reg, v.address_reg, v.city_reg, v.select_reg],
             (err, results, fields) => {
                 if(err) {
-                    console.log("Virhe lisättäessä käyttäjää user-tauluun, syy: "+err);
+                    console.log("Error while tried to add new user to users table, reason: "+err);
                     res.json(error);
                 } else {
-                    console.log("Uusi käyttäjä lisätty users-pöytään: "+JSON.stringify(results));
+                    console.log("New user added to table users: "+JSON.stringify(results));
                     res.statusCode = 201;
                 }
             }

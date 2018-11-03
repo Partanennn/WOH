@@ -61,29 +61,23 @@ $(() => {
 
 
         if(nameOK == true && usernameOK == true && passOK == true && addressOK == true) {
-                $('input[id="visitingaddress_reg"], input[id="password2_reg"], input[id="password_reg"], input[id="username_reg"], input[id="name_reg"]').css("border", "none");
-                if(checkUser()) {
+            $('input[id="visitingaddress_reg"], input[id="password2_reg"], input[id="password_reg"], input[id="username_reg"], input[id="name_reg"]').css("border", "none");
+            
+            $.get("http://localhost:3001/users/"+username
+            ).done((data, status, jq) => {
+                // Checks if response is empty, if yes then creates new user
+                if(data[0] == undefined) {
                     createUser();
+                    alert("Rekisteröinti onnistui!");
+                } else {
+                    alert("Tunnus on jo varattu, kokeile uudestaan");
                 }
-                
+            });
+
         } else if(passOK){
             alert("Ole hyvä ja täytä kaikki kentät!");
         }
-        });
-
-    function checkUser() {
-        $.get("http://localhost:3001/users/all"
-            ).done((data, status, jq) => {
-                alert("SIs'll'lsldäa");
-                $.each(data.response, (index, a) => {
-                    if(a.username == username) {
-                        alert("Samat");
-                        return false;
-                    }
-                });
-                return true;
-            });
-    }
+    });
 
     function createUser() {
         var addons = $("#register_form").serialize();
@@ -92,9 +86,7 @@ $(() => {
             "http://localhost:3001/create_user", 
             addons
         ).done ( function(data, status, jqxhr) {
-            if(true) {
-                alert("Rekisteröinti onnistui!");
-            }
+
         }).fail( (jqxhr, status, error) => {
             console.log("status= "+status+", error: "+error);
         });

@@ -25,6 +25,7 @@ app.route("/users/all")
 app.route("/users/:tunnus")
     .get(controller.fetchOneUser);
 
+// Adds user to users table
 app.route("/create_user")
     .post(controller.addUser);
 

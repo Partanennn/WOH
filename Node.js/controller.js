@@ -52,7 +52,6 @@ module.exports =
                 } else {
                     console.log("Uusi käyttäjä lisätty users-pöytään: "+JSON.stringify(results));
                     res.statusCode = 201;
-                    
                 }
             }
         );

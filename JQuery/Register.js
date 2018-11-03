@@ -5,10 +5,9 @@ $(() => {
         var pass = $("#password_reg").val();
         var pass2 = $("#password2_reg").val();
         var address = $("#address_reg").val();
-        var city = $("#city_reg").val();
         var role = $("#reg_select").val();
         // Variables to check if textbox is not empty
-        var nameOK, usernameOK, passOK, pass2OK, addressOK, cityOK;
+        var nameOK, usernameOK, passOK, pass2OK, addressOK;
 
         
         if(name == "") {
@@ -31,28 +30,28 @@ $(() => {
             $('input[id="address_reg"]').css("border", "2px solid red");
             addressOK = false;
         } else addressOK = true;
-        if(city == "") {
-            $('input[id="city_reg"]').css("border", "2px solid red");
-            cityOK = false;
-        } else {
-            $('input[id="city_reg"]').css("border", "none");            
-            cityOK = true;
-        }
         
+        if(passOK && pass2OK && pass == pass2) {
+            passOK = true;
+        } else {
+            passOK = false;
+            alert("Salasanat eivät täsmää!");
+        }
+
 
         var addons = $("#register_form").serialize();
         
-        if(nameOK == true && usernameOK == true && passOK == true && pass2OK == true && addressOK == true && cityOK == true) {
+        if(nameOK == true && usernameOK == true && passOK == true && addressOK == true) {
             $.post(
-                "http://localhost:3001/create_user", addons
-            ).done ((data, status, jqxhr) => {
-                console.log("Data: "+data+"\n status: "+status+"\n jqxhr: "+jqxhr);
-                $('input[id="name_reg"], ').css("border", "none");
+                "http://localhost:3001/create_user", 
+                addons
+            ).done ( function(data, status, jqxhr) {
+                //$('input[id="name_reg"], input[id="username_reg"], input[id="password_reg"], input[id="password2_reg"], input[id="address_reg"]').css("border", "none");
                 alert("Rekisteröinti onnistui!");
-            }).fail((jqxhr, status, error) => {
+            }).fail( (jqxhr, status, error) => {
                 console.log("status= "+status+", error: "+error);
             });
-        } else {
+        } else if(passOK){
             alert("Ole hyvä ja täytä kaikki kentät!");
         }
     });

@@ -7,5 +7,8 @@ $(() => {
         var city = $("#city_reg").val();
         var role = $("#reg_select").val();  // 0=Yksityinen, 1=yritys
 
+        var addons = $("#register_form").serialize();
+
+        $.post("http://localhost:3001/create_user", addons);
     });
 });

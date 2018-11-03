@@ -38,6 +38,24 @@ module.exports =
                 }
             }
         );
+    },
+
+    addUser: (req, res) => {
+        console.log("Body: " + JSON.stringify(req.body));
+        let v = req.body;
+
+        CONNECTION.query('INSERT INTO users (username, password, name, address, city, role) VALUES (?, ?, ?, ?, ?, ?)', [v.username_reg, v.password_reg, v.name_reg, v.address_reg, v.city_reg, v.select_reg],
+            (err, results, fields) => {
+                if(err) {
+                    console.log("Virhe lisättäessä käyttäjää user-tauluun, syy: "+err);
+                    res.json(error);
+                } else {
+                    console.log("Uusi käyttäjä lisätty users-pöytään: "+JSON.stringify(results));
+                    res.statusCode = 201;
+                    
+                }
+            }
+        );
     }
 }
 

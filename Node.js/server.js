@@ -1,7 +1,8 @@
 var express = require('express');
-var app = express();
+var bodyParser = require('body-parser');
 var controller = require('./controller');
 var port = 3001;
+var app = express();
 
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
@@ -14,6 +15,9 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 //REST API Users
 app.route("/users/all")
     .get(controller.fetchAll);
@@ -21,6 +25,8 @@ app.route("/users/all")
 app.route("/users/:tunnus")
     .get(controller.fetchOneUser);
 
+app.route("/create_user")
+    .post(controller.addUser);
 
 
 app.listen(port, () => {

@@ -1,8 +1,6 @@
 CREATE DATABASE harkka;
 USE harkka;
 
--- Foreign key postinumerolle
-
 CREATE TABLE harkka.users
 (
     username varChar(10) NOT NULL PRIMARY KEY,
@@ -10,8 +8,7 @@ CREATE TABLE harkka.users
     name varChar(40),
     visiting_address varChar(50),
     billing_address varChar(50),
-    role varChar(20) DEFAULT 'user',
-    logged BOOLEAN DEFAULT 0
+    role varChar(20) DEFAULT 'user'
 )
 ENGINE = InnoDB;
 
@@ -44,6 +41,7 @@ INSERT INTO states (status) VALUES("HYVÄKSYTTY");
 INSERT INTO states (status) VALUES("HYLÄTTY");
 INSERT INTO states (status) VALUES("VASTATTU");
 INSERT INTO states (status) VALUES("TARJOUS");
+
 INSERT INTO users(username, password, name, visiting_address, role) VALUES('admin', 'admin', 'Super Jumala', 'Taivas', 'Jumalainentie 1', 'admin');
 INSERT INTO users(username, password, name, visiting_address) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Kuopio', 'Minna Canthin katu 1');
 INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', 'moi1', 'Jonne Jokunen', 'Helsinki', 'Mannerheiminkatu 23');

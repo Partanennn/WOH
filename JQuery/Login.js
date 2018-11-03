@@ -1,4 +1,3 @@
-
 $(document).ready(() => {
     $("#login_button").click(() => {
         var user = $("#username_login").val();

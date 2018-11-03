@@ -22,11 +22,11 @@ $(document).ready(() => {
             // Checks if username and password match
             $.get("http://localhost:3001/users/"+user)
                 .done( (data, textstatus, jqXHR) => {
-                    if(data[0].password == pass) {
+                    if(data[0] == undefined || data[0].password != pass) {
+                        alert("Väärä tunnus tai salasana!!");
+                    } else if(data[0].password == pass){                        
                         sessionStorage['login_enimi'] = data[0].name;
                         window.location.href = 'etusivu.html';
-                    } else {
-                        alert("Väärä tunnus tai salasana!!");
                     }
                 })
                 .fail( (error) => {

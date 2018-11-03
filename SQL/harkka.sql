@@ -42,8 +42,8 @@ INSERT INTO states (status) VALUES("HYLÄTTY");
 INSERT INTO states (status) VALUES("VASTATTU");
 INSERT INTO states (status) VALUES("TARJOUS");
 
-INSERT INTO users(username, password, name, visiting_address, role) VALUES('admin', 'admin', 'Super Jumala', 'Taivas', 'Jumalainentie 1', 'admin');
-INSERT INTO users(username, password, name, visiting_address) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Kuopio', 'Minna Canthin katu 1');
-INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', 'moi1', 'Jonne Jokunen', 'Helsinki', 'Mannerheiminkatu 23');
-INSERT INTO users(username, password, name, visiting_address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Iisalmi', 'Pohjolankatu 43');
-INSERT INTO users(username, password, name, visiting_address, role) VALUES('ISS', '1234', 'ISS Oy', 'Kuopio', 'Kaivotie 23', 'corporation');
+INSERT INTO users(username, password, name, visiting_address, role) VALUES('admin', 'admin', 'Super Jumala', 'Jumalainentie 1', 'admin');
+INSERT INTO users(username, password, name, visiting_address) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Minna Canthin katu 1');
+INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', 'moi1', 'Jonne Jokunen', 'Mannerheiminkatu 23');
+INSERT INTO users(username, password, name, visiting_address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Pohjolankatu 43');
+INSERT INTO users(username, password, name, visiting_address, role) VALUES('ISS', '1234', 'ISS Oy', 'Kaivotie 23', 'corporation');

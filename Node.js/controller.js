@@ -44,7 +44,7 @@ module.exports =
         console.log("Body: " + JSON.stringify(req.body));
         let v = req.body;
 
-        CONNECTION.query('INSERT INTO users (username, password, name, address, city, role) VALUES (?, ?, ?, ?, ?, ?)', [v.username_reg, v.password_reg, v.name_reg, v.address_reg, v.city_reg, v.select_reg],
+        CONNECTION.query('INSERT INTO users (username, password, name, visiting_address, role) VALUES (?, ?, ?, ?, ?)', [v.username_reg, v.password_reg, v.name_reg, v.visitingaddress_reg, v.select_reg],
             (err, results, fields) => {
                 if(err) {
                     console.log("Error while tried to add new user to users table, reason: "+err);

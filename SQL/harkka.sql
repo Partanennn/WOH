@@ -24,7 +24,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE harkka.workorders
 (
-    id NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     order_username varChar(20) NOT NULL,
     address varChar(50) NOT NULL,
     city varChar(20) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE harkka.workorders
     end_time DATE NOT NULL,
     description varChar(200),
     status varChar(20),
-    price DECIMAL(7, 2), --Jos saa arvon 0,01, niin se on tarjouspyyntö
+    price DECIMAL(7, 2),
     CONSTRAINT workorders_orderUsername_users_fk FOREIGN KEY (order_username) REFERENCES users(username)
 )
 ENGINE = InnoDB;

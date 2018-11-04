@@ -7,9 +7,7 @@ $(() => {
         var address = $("#visitingaddress_reg").val();
         var role = $("#reg_select").val();
         // Variables to check if textbox is not empty
-        var nameOK, usernameOK, passOK, pass2OK, addressOK;
-        // This variable checks if username that user did set in textbox while he registers is not in use
-        var usernameOK;
+        var nameOK, usernameOK, passOK, pass2OK;
 
         // These if elses are handling textboxes and their borders
         if(name == "") {
@@ -44,13 +42,6 @@ $(() => {
             $('input[id="password2_reg"]').css("border", "none");
         }
 
-        if(address == "") {
-            $('input[id="visitingaddress_reg"]').css("border", "2px solid red");
-            addressOK = false;
-        } else {
-            addressOK = true;
-            $('input[id="visitingaddress_reg"]').css("border", "none");
-        }
         // This checks if first password and second password textboxes have same value and if not, then it doesnt let register new user
         if(passOK && pass2OK && pass == pass2) {
             passOK = true;
@@ -60,9 +51,11 @@ $(() => {
         }
 
 
-        if(nameOK == true && usernameOK == true && passOK == true && addressOK == true) {
+        if(nameOK == true && usernameOK == true && passOK == true) {
             $('input[id="visitingaddress_reg"], input[id="password2_reg"], input[id="password_reg"], input[id="username_reg"], input[id="name_reg"]').css("border", "none");
             
+            // This $.get tries to find username what user did put in textbox, 
+            //if response is undefined(=username doesn't exists) then create new user
             $.get("http://localhost:3001/users/"+username
             ).done((data, status, jq) => {
                 // Checks if response is empty, if yes then creates new user

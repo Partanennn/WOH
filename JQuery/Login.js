@@ -25,8 +25,9 @@ $(document).ready(() => {
                     if(data[0] == undefined || data[0].password != pass) {
                         alert("Väärä tunnus tai salasana!!");
                     } else if(data[0].password == pass){
+                        alert(data[0].name);
                         sessionStorage['logged'] = true;        
-                        sessionStorage['login_enimi'] = data[0].name;
+                        sessionStorage['login_name'] = data[0].name;
                         window.location.href = 'etusivu.html';
                     }
                 })

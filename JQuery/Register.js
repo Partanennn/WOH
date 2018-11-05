@@ -1,4 +1,9 @@
 $(() => {
+    // Checks if user is logged in then he will be redirected to etusivu.html
+    if(sessionStorage['logged'] == "true") {
+        window.location.href="etusivu.html";
+    }
+
     $("#reg_button").click(() => {
         var name = $("#name_reg").val();
         var username = $("#username_reg").val();

@@ -1,4 +1,10 @@
 $(document).ready(() => {
+    
+    // This if checks if user is already logged in and relocate to etusivu.html if user is logged
+    if(sessionStorage['logged'] == "true") {
+        window.location.href='etusivu.html';
+    }
+
     $("#login_button").click(() => {
         var user = $("#username_login").val();
         var pass = $("#password_login").val();
@@ -25,10 +31,12 @@ $(document).ready(() => {
                     if(data[0] == undefined || data[0].password != pass) {
                         alert("Väärä tunnus tai salasana!!");
                     } else if(data[0].password == pass){
-                        alert(data[0].name);
                         sessionStorage['logged'] = true;        
                         sessionStorage['login_name'] = data[0].name;
-                        window.location.href = 'etusivu.html';
+                        if(data[0].role == 'user')
+                            window.location.href = 'etusivu_user.html';
+                        else if(data[0].role)
+                            window.location.href = 'etusivu_corp.html'
                     }
                 })
                 .fail( (error) => {

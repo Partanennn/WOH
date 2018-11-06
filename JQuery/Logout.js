@@ -1,13 +1,16 @@
 $(() => {
+    $("#logout_button").click(() => {
+        $("#logout_dialog").dialog("open");    
+    });
+
     $("#logout_dialog").dialog({
+        autoOpen: false,
         buttons: [
             {
                 text: "Kyllä",
                 click: () => {
-                    $("#logout_button").click(() => {
-                        sessionStorage.clear();
-                        window.location.href='Rekisteroidy.html';
-                    });
+                    sessionStorage.clear();
+                    window.location.href='Rekisteroidy.html';
                 }
             },
             {

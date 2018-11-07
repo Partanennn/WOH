@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!--JQuery scripts-->
@@ -33,7 +34,7 @@
 
         <div id="header">
             <ul id="nav">
-                <li><a id="logout_button" href="">Kirjaudu Ulos</a></li>
+                <li><a id="logout_button" href="javascript:undefined">Kirjaudu Ulos</a></li>
                 <li><a href="apua.html">Apua</a></li>
                 <li><a id="orders" href="">Tilaukset</a></li>
                 <li><a href="#">Tarjouspyynnöt</a></li>
@@ -44,9 +45,7 @@
 
         <div id="section">
             <div id="logout_dialog">
-                <form hidden id="logout_form">
-                    <input type="text">
-                </form>
+                <p>Haluatko varmasti kirjautua ulos?</p>
             </div>
             <h1>section</h1>
         </div>

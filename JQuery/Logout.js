@@ -2,7 +2,6 @@ $(() => {
     $("#logout_button").click(() => {
         $("#logout_dialog").dialog("open");    
     });
-
     $("#logout_dialog").dialog({
         autoOpen: false,
         buttons: [
@@ -21,4 +20,5 @@ $(() => {
             }
         ]
     });
+    
 });

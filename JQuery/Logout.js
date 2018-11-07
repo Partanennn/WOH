@@ -16,7 +16,7 @@ $(() => {
             {
                 text: "En",
                 click: () => {
-                    $(this).dialog("close");
+                    $("#logout_dialog").dialog("close");
                 }
             }
         ]

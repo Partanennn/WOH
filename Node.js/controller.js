@@ -24,7 +24,7 @@ module.exports =
             }
         });
     },
-    // Fetch user and password from user table "/users/:tunnus/:salasana"
+    // Fetch user and password from user table "/users/:tunnus"
     fetchOneUser: (req, res) => {
         var username = req.params.tunnus;
         CONNECTION.query('SELECT * FROM users WHERE username = ?', [username],

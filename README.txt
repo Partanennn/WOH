@@ -1,10 +1,6 @@
 Sovellus toimii firefox selaimessa
 
-
-
-Että react-tiedostot saadaan aukaistua, pitää asentaa lokaali http serveri Node.js:llä. Se onnistuu seuraavasti:
-1. Avaa command prompt
-2. Lataa http-server kirjoittamalla: npm install -g http-server
-3. Mene command promptin kautta kansioon, jossa nämä tiedostot sijaitsevat.
-4. Käynnistä serveri kirjoittamalla command promptiin: http-server -c-1
-5.Nyt löydät tiedostot kirjoittamalla selaimeen localhost:8080. Aloita aukaisemalla etusivu.html
+Databasen käyttöön otto:
+1. Käynnistä WAMP-Server (Tai pelkkä apache jollain tapaa)
+2. Mene command promptilla Node.js kansioon, se löytyy sieltä minne tallensit muutkin tiedostot.
+3. Kirjoita command promptiin npm run start ja serveri on päällä, kun command promptiin tulee teksti "Server is running at port 3001"

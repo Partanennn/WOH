@@ -40,7 +40,22 @@ module.exports =
         );
     },
 
-    addUser: (req, res) => {
+    fetchWorkorders: (req, res) => {
+        let user = req.params.username;
+        CONNECTION.query('SELECT * FROM workorders WHERE order_username=?', [user], 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while fetching user and password from user table, reason: " + error);
+                    res.json({"status": 500, "error": error, "response": null});
+                } else {
+                    console.log("Succesfully fetched workorders for " + user + ", "+time());
+                    res.status(200).json(results);
+                }
+            }
+        );
+    },
+
+    createUser: (req, res) => {
         console.log("Body: " + JSON.stringify(req.body));
         let v = req.body;
 

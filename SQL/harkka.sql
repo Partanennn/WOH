@@ -33,7 +33,7 @@ CREATE TABLE harkka.workorders
     hours int,
     comment_of_used_material varChar(200),
     approx_budget int,
-    status varChar(20),
+    status varChar(20) NOT NULL DEFAULT "TILATTU",
     CONSTRAINT workorders_username_fk FOREIGN KEY (order_username) REFERENCES users(username)
 )
 ENGINE = InnoDB;
@@ -52,10 +52,10 @@ INSERT INTO users(username, password, name, visiting_address, role) VALUES('admi
 INSERT INTO users(username, password, name, visiting_address) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Minna Canthin katu 1');
 INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', 'moi1', 'Jonne Jokunen', 'Mannerheiminkatu 23');
 INSERT INTO users(username, password, name, visiting_address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Pohjolankatu 43');
-INSERT INTO users(username, password, name, visiting_address, role) VALUES('ISS', '1234', 'ISS Oy', 'Kaivotie 23', 'corporation');
+INSERT INTO users(username, password, name, visiting_address) VALUES('ISS', '1234', 'ISS Oy', 'Kaivotie 23');
 
-INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate) VALUES('Aleksi1', 'Tää on testi', DATE_FORMAT(CURDATE(), "%d %m %Y"), '2018-11-11', '2018-11-13');
-INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate) VALUES('moi123', 'Ovien maalaaminen', CURDATE(), '2018-11-20', '2018-11-28');
+INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('Aleksi1', 'Tää on testi', CURRENT_DATE(), '2018-11-11', '2018-11-13', 'ALOITETTU');
+INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('moi123', 'Ovien maalaaminen', CURDATE(), '2018-11-20', '2018-11-28', 'ALOITETTU');
 INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Seinien maalaaminen', CURDATE());
 INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Tää on testi', CURDATE());
 INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Tää on testi', CURDATE());

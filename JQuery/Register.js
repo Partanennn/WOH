@@ -83,7 +83,7 @@ $(() => {
         $.post(
             "http://localhost:3001/create_user", 
             addons
-        ).done ( function(data, status, jqxhr) {
+        ).done ( (data, status, jqxhr) => {
 
         }).fail( (jqxhr, status, error) => {
             console.log("status= "+status+", error: "+error);

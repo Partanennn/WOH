@@ -42,10 +42,10 @@ module.exports =
 
     fetchWorkorders: (req, res) => {
         let user = req.params.username;
-        CONNECTION.query('SELECT * FROM workorders WHERE order_username=?', [user], 
+        CONNECTION.query('SELECT w.order_username, w.work_description, w.orderdate, w.startdate, w.readydate, w.accepteddate, w.denieddate, w.comment_of_work, w.hours, w.approx_budget, s.status FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 
             (error, results, fields) => {
                 if(error) {
-                    console.log("Error while fetching user and password from user table, reason: " + error);
+                    console.log("Error while fetching workorders from workorders table, reason: " + error);
                     res.json({"status": 500, "error": error, "response": null});
                 } else {
                     console.log("Succesfully fetched workorders for " + user + ", "+time());

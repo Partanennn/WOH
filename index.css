@@ -79,7 +79,6 @@ body {
 }
 
 #section {
-    background-color: yellow;
     grid-area: 2/1/4/3;
 }
 
@@ -89,6 +88,11 @@ body {
 
 #footer {
     grid-area: 4/1/4/4;
+}
+
+#workorders_table {
+    margin-left: 2em;
+    margin-right: 4em;
 }
 
 code {

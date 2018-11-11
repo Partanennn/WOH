@@ -30,9 +30,9 @@ $(() => {
     });
 
     $("#user_name").append(
-        "<h2>"+
+        "<h4>"+
         "Hei "+sessionStorage['login_name']+
-        "<h2>"
+        "<h4>"
     );
 
     // Formats date to dd.MM.YYYY format

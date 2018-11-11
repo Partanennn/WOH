@@ -33,10 +33,8 @@ $(document).ready(() => {
                     } else if(data[0].password == pass){
                         sessionStorage['logged'] = true;        
                         sessionStorage['login_name'] = data[0].name;
-                        if(data[0].role == 'user')
-                            window.location.href = 'etusivu_user.html';
-                        else if(data[0].role)
-                            window.location.href = 'etusivu_corp.html'
+                        sessionStorage['login_username'] = data[0].username;
+                        window.location.href = 'etusivu.html';
                     }
                 })
                 .fail( (error) => {

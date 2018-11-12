@@ -1,6 +1,13 @@
 CREATE DATABASE harkka;
 USE harkka;
 
+CREATE TABLE harkka.housing_types 
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    housing varChar(40) NOT NULL
+)
+ENGINE = InnoDB;
+
 CREATE TABLE harkka.users
 (
     username varChar(10) NOT NULL PRIMARY KEY,
@@ -8,7 +15,13 @@ CREATE TABLE harkka.users
     name varChar(40),
     visiting_address varChar(50),
     billing_address varChar(50),
-    role varChar(20) DEFAULT 'user'
+    role varChar(20) DEFAULT 'user',
+    phonenumber char(10),
+    email varChar(100),
+    housing int,
+    house_squares DOUBLE(10,2),
+    building_ground DOUBLE(10,2),
+    CONSTRAINT workorders_housing_fk FOREIGN KEY (housing) REFERENCES housing_types(id)
 )
 ENGINE = InnoDB;
 
@@ -39,7 +52,9 @@ CREATE TABLE harkka.workorders
 )
 ENGINE = InnoDB;
 
-
+INSERT INTO housing_types (housing) VALUES("Omakotitalo");
+INSERT INTO housing_types (housing) VALUES("Vapaa-ajan asunto");
+INSERT INTO housing_types (housing) VALUES("Maatila");
 
 INSERT INTO states (status) VALUES("TILATTU");
 INSERT INTO states (status) VALUES("ALOITETTU");

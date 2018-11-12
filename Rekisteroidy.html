@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="CSS/reg.css">
+    <link rel="stylesheet" href="CSS/Rekisteroidy.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!--Bootstrap css-->
@@ -44,21 +45,22 @@
             <h4>Tähdellä(*) merkityt kohdat ovat pakollisia</h4><br>
             <div class="form-row">
                 <form class="login_form" id="register_form">
-                    <label for="name_reg" class="mr-sm-2">*Nimi:</label>
-                    <input type="text" class="form-control mr-sm-2" name="name_reg" id="name_reg" placeholder="Nimi" maxlength="40"><br>
-                    <label for="username_reg" class="mr-sm-2">*Tunnus:</label>
-                    <input type="text" class="form-control mr-sm-2" name="username_reg" id="username_reg" placeholder="Tunnus" maxlength="10"><br>
-                    <label for="password_reg" class="mr-sm-2">*Salasana:</label>
-                    <input type="password" class="form-control mr-sm-2" name="password_reg" id="password_reg" placeholder="Max 20 merkkiä" maxlength="20"><br>
-                    <label for="password2_reg" class="mr-sm-2">*Salasana uudestaan:</label>
-                    <input type="password" class="form-control mr-sm-2" name="password2_reg" id="password2_reg" placeholder="Anna salasana uudestaan" maxlength="20"><br>
-                    <label for="address_reg" class="mr-sm-2">Lähiosoite:</label>
-                    <input type="text" class="form-control mr-sm-2" name="visitingaddress_reg" id="visitingaddress_reg" placeholder="Katuosoite" maxlength="50"><br>
-                    <label for="reg_select" class="mr-sm-2">Oletko:</label>
-                    <select id="reg_select" name="select_reg" class="form-control">
-                        <option value="user">Yksityinen</option>
-                        <option value="corporation">Yritys</option>
-                    </select><br>
+                <div id="reg_cont">
+                    <div id="reg_1">
+                        <label for="name_reg" class="mr-sm-2">*Nimi:</label>
+                        <input type="text" class="form-control mr-sm-2" name="name_reg" id="name_reg" placeholder="Nimi" maxlength="40"><br>
+                        <label for="username_reg" class="mr-sm-2">*Tunnus:</label>
+                        <input type="text" class="form-control mr-sm-2" name="username_reg" id="username_reg" placeholder="Tunnus" maxlength="10"><br>
+                        <label for="password_reg" class="mr-sm-2">*Salasana:</label>
+                        <input type="password" class="form-control mr-sm-2" name="password_reg" id="password_reg" placeholder="Max 20 merkkiä" maxlength="20"><br>
+                        <label for="password2_reg" class="mr-sm-2">*Salasana uudestaan:</label>
+                        <input type="password" class="form-control mr-sm-2" name="password2_reg" id="password2_reg" placeholder="Anna salasana uudestaan" maxlength="20"><br>
+                    </div>
+                    <div id="reg_2">
+                        <label for="address_reg" class="mr-sm-2">Lähiosoite:</label>
+                        <input type="text" class="form-control mr-sm-2" name="visitingaddress_reg" id="visitingaddress_reg" placeholder="Katuosoite" maxlength="50"><br>
+                    </div>
+                </div>
                 </form>
                 <button name="reg_button" class="btn btn-primary" id="reg_button">Rekisteröidy</button>
             </div>

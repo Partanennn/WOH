@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!--Bootstrap css-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!--React scripts-->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    
     <!--JQuery scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -22,66 +17,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     
-    <script src="JQuery/Login.js"></script>
-    <script src="JQuery/Register.js"></script>
-    
+    <script src="JQuery/username_appear.js"></script>
+    <script src="JQuery/Logout.js"></script>
+    <script src="JQuery/Logged.js"></script>
+
     <title>Harkkatyö</title>
 </head>
-
+<style>
+    a {
+        color: white;
+    }
+    a:hover {
+        color: rgb(175, 175, 175);
+        text-decoration: none;
+    }
+</style>
 <body>
     <noscript>
         You need to enable JavaScript to run this app.
     </noscript>
+    <script>
+        
+    </script>
     <div id="grid">
 
         <div id="header">
+            <div id="user_name"></div>                        
+
+            <ul id="nav">
+                <li><a id="logout_button" href="javascript:undefined">Kirjaudu Ulos</a></li>
+                <li><a href="etusivu.html">Tilaukset</a></li>
+                <li><a href="#">Tarjouspyynnöt</a></li>
+            </ul>
             
         </div>
 
-        <div id="section"><br><br>
-            <h2>Jos et ole vielä rekisteröitynyt niin tee se alla</h2><br>
-            <h4>Tähdellä(*) merkityt kohdat ovat pakollisia</h4><br>
-            <div class="form-row">
-                <form class="login_form" id="register_form">
-                    <label for="name_reg" class="mr-sm-2">*Nimi:</label>
-                    <input type="text" class="form-control mr-sm-2" name="name_reg" id="name_reg" placeholder="Nimi" maxlength="40"><br>
-                    <label for="username_reg" class="mr-sm-2">*Tunnus:</label>
-                    <input type="text" class="form-control mr-sm-2" name="username_reg" id="username_reg" placeholder="Tunnus" maxlength="10"><br>
-                    <label for="password_reg" class="mr-sm-2">*Salasana:</label>
-                    <input type="password" class="form-control mr-sm-2" name="password_reg" id="password_reg" placeholder="Max 20 merkkiä" maxlength="20"><br>
-                    <label for="password2_reg" class="mr-sm-2">*Salasana uudestaan:</label>
-                    <input type="password" class="form-control mr-sm-2" name="password2_reg" id="password2_reg" placeholder="Anna salasana uudestaan" maxlength="20"><br>
-                    <label for="address_reg" class="mr-sm-2">Lähiosoite:</label>
-                    <input type="text" class="form-control mr-sm-2" name="visitingaddress_reg" id="visitingaddress_reg" placeholder="Katuosoite" maxlength="50"><br>
-                    <label for="reg_select" class="mr-sm-2">Oletko:</label>
-                    <select id="reg_select" name="select_reg" class="form-control">
-                        <option value="user">Yksityinen</option>
-                        <option value="corporation">Yritys</option>
-                    </select><br>
-                </form>
-                <button name="reg_button" class="btn btn-primary" id="reg_button">Rekisteröidy</button>
+        <div id="section">
+
+            <div id="logout_dialog">
+                <p>Haluatko varmasti kirjautua ulos?</p>
             </div>
         </div>
 
-        <div id="login" class="form-row">
-            <form id="login_form" class="form" action="" method="POST">
-                <label for="username_login" class="mr-sm-2">Tunnus:</label>
-                <input type="text" class ="form-control mb-2 mr-sm-2" name="username_login" id="username_login" placeholder="Tunnus"><br>
-                <label for="password_login" class="mr-sm-2">Salasana:</label>
-                <input type="password" class="form-control mb-2 mr-sm-2" name="password_login" id="password_login" placeholder="Salasana"><br>
-            </form>
-            <button type="submit" name="login_button" class="btn btn-primary" id="login_button">Kirjaudu</button>
-            <p hidden id="login_err_msg">Salasana tai tunnus ei täsmää</p>
+        <div id="footer" class="panel-footer">
         </div>
-
-        <div id="section2" class="panel-info">
-            <h3>Terve</h3>
-            <p id="section3"></p>
-        </div>
-
-        <footer id="footer" class="panel-footer">
-            <h1>Footer</h1>
-        </footer>
         
     </div>
 </body>

@@ -55,8 +55,7 @@ body {
 
 #section {
     margin-left: 3em;
-    margin-top: 3em;
-    grid-area: 2/1/4/4;
+    grid-area: 2/1/4/3;
 }
 
 #section2 {

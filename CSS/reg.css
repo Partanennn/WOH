@@ -10,8 +10,12 @@
     height: 4em;
 }
 
+#section {
+    background-color: rgb(230, 230, 230);
+}
+
 #login {
-    background-color: yellow;
+    background-color: rgb(230, 230, 230);
     grid-area: 2/3/2/3;
 }
 

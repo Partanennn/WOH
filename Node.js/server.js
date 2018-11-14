@@ -24,11 +24,14 @@ app.route("/users")
     .post(controller.createUser);
 
 app.route("/users/:tunnus")
+    .put(controller.updateUser)
     .get(controller.fetchOneUser);
 
 app.route("/workorders/:username")
     .get(controller.fetchWorkorders);
 
+app.route("/housing_types")
+    .get(controller.fetchHousingTypes);
 
 app.listen(port, () => {
     console.log("Server is running at port "+port);

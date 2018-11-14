@@ -40,6 +40,20 @@ module.exports =
         );
     },
 
+    fetchHousingTypes: (req, res) => {
+        CONNECTION.query('SELECT housing FROM housing_types', 
+            (error, result, fields) => {
+                if(error) {
+                    console.log("Error while trying to fetch housing types from housing_types-table, reason: "+error);
+                    res.json({"status": 500, "error": error, "response": null});
+                } else {
+                    console.log("Succesfully fetched housing types, "+time());
+                    res.status(200).json(result);
+                }
+            }
+        );
+    },
+
     fetchWorkorders: (req, res) => {
         let user = req.params.username;
         CONNECTION.query('SELECT w.order_username, w.work_description, w.orderdate, w.startdate, w.readydate, w.accepteddate, w.denieddate, w.comment_of_work, w.hours, w.approx_budget, s.status FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 
@@ -69,6 +83,28 @@ module.exports =
                     res.statusCode = 201;
                 }
             }
+        );
+    },
+
+    updateUser: (req, res) => {
+        console.log("body: " + JSON.stringify(req.body));
+        console.log("params: " + JSON.stringify(req.params));
+        let c = req.body; // Form fields
+        let key = req.params.tunnus; // Username
+  
+        connection.query('UPDATE users SET  WHERE ', [],
+          function(error, results, fields){
+            if ( error ){
+                console.log("Error while trying to update "+key+" in users table, reason: " + error);
+                res.send(error);
+            }
+            else
+            {
+                console.log("Data updated for user "+key);
+                res.statusCode = 204;
+                res.send();
+            }
+          }
         );
     }
 }

@@ -19,14 +19,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //REST API Users
-app.route("/users/all")
-    .get(controller.fetchAll);
+app.route("/users")
+    .get(controller.fetchAll)
+    .post(controller.createUser);
 
 app.route("/users/:tunnus")
     .get(controller.fetchOneUser);
-
-app.route("/create_user")
-    .post(controller.createUser);
 
 app.route("/workorders/:username")
     .get(controller.fetchWorkorders);

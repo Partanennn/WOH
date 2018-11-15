@@ -17,7 +17,7 @@ $(() => {
                     //
                     //
                     //                                                       =========EI TUNNISTA FUNKTIOTA OLEMASSA OLEVAKS
-                    nappi = "<td><button>Muokkaa</button></td>"+"<td><button onclick=\"deleteUser()\">Poista</button></td>";
+                    nappi = "<td><button>Muokkaa</button></td>"+"<td><button onclick=\"deleteUser(" + data[i].id + ")\">Poista</button></td>";
                 }
                 $("#orders_table").append(
                     "<tr>" +

@@ -43,16 +43,20 @@
     </script>
     <div id="grid">
 
-        <div id="header">
-            <div id="user_name"></div>                        
-
-            <ul id="nav">
-                <li><a id="logout_button" href="javascript:undefined">Kirjaudu Ulos</a></li>
-                <li><a href="etusivu.html">Tilaukset</a></li>
-                <li><a href="#">Tarjouspyynnöt</a></li>
-            </ul>
-            
-        </div>
+            <div id="header" class="navbar navbar-expand-lg  navbar-light">
+                    <div id="user_name"></div>                        
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul id="nav">
+                            <li><a id="logout_button" href="javascript:undefined">Kirjaudu Ulos</a></li>
+                            <li><a href="etusivu.html">Tilaukset</a></li>
+                            <li><a href="#">Tarjouspyynnöt</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
 
         <div id="logout_dialog">
             <p>Haluatko varmasti kirjautua ulos?</p>

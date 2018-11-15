@@ -41,7 +41,7 @@ module.exports =
     },
 
     fetchHousingTypes: (req, res) => {
-        CONNECTION.query('SELECT housing FROM housing_types', 
+        CONNECTION.query('SELECT * FROM housing_types', 
             (error, result, fields) => {
                 if(error) {
                     console.log("Error while trying to fetch housing types from housing_types-table, reason: "+error);

@@ -92,7 +92,7 @@ module.exports =
         let c = req.body; // Form fields
         let key = req.params.tunnus; // Username
   
-        connection.query('UPDATE users SET  WHERE ', [],
+        CONNECTION.query('UPDATE users SET name=?, username=?, visiting_address=?, billing_address=?, phonenumber=?, email=?, house_squares=?, building_ground=?, housing=? WHERE username=?', [c.name_reg, c.username_reg, c.visitingaddress_reg, c.billingaddress_reg, c.phonenumber_reg, c.email_reg, c.house_squares, c.building_ground, c.housing_select, key],
           function(error, results, fields){
             if ( error ){
                 console.log("Error while trying to update "+key+" in users table, reason: " + error);
@@ -100,7 +100,7 @@ module.exports =
             }
             else
             {
-                console.log("Data updated for user "+key);
+                console.log("Data updated for user "+key+", "+time());
                 res.statusCode = 204;
                 res.send();
             }

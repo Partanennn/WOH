@@ -24,4 +24,16 @@ $(() => {
 
     });
     
+    $("#update_button").click(() => {
+        $.ajax(
+            {
+                url: "http://localhost:3001/users/" + sessionStorage['login_username'],
+                method: 'put',
+                data: $("#update_form").serialize()
+            }).done( (data, textStatus, jqXHR) => {
+                
+            }).fail( (jqXHR, textStatus, errorThrown) => {
+                console.log("Ajax put-call did fail, reason: " + errorThrown);
+            });
+    });
 });

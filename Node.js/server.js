@@ -25,10 +25,14 @@ app.route("/users")
 
 app.route("/users/:tunnus")
     .put(controller.updateUser)
+    .delete(controller.deleteUser)
     .get(controller.fetchOneUser);
 
 app.route("/workorders/:username")
     .get(controller.fetchWorkorders);
+
+app.route("/workorders_delete/:id")
+    .get(controller.deleteWorkorder);
 
 app.route("/housing_types")
     .get(controller.fetchHousingTypes);

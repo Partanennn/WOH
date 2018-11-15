@@ -31,7 +31,7 @@ $(() => {
                 method: 'put',
                 data: $("#update_form").serialize()
             }).done( (data, textStatus, jqXHR) => {
-                
+                $("#update_form").submit();
             }).fail( (jqXHR, textStatus, errorThrown) => {
                 console.log("Ajax put-call did fail, reason: " + errorThrown);
             });

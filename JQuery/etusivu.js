@@ -8,8 +8,16 @@ $(() => {
             
             for(var i = 0; i < data.length; i++) {
                 var nappi = "<td></td>";
-                if(data[i].status == "ALOITETTU") {
-                    nappi = "<td><button>Joo</button></td>";
+                if(data[i].status == "TILATTU") {
+                    //
+                    //
+                    //
+                    //
+                    //   TÄHÄN MUUTOS
+                    //
+                    //
+                    //                                                       =========EI TUNNISTA FUNKTIOTA OLEMASSA OLEVAKS
+                    nappi = "<td><button>Muokkaa</button></td>"+"<td><button onclick=\"deleteUser()\">Poista</button></td>";
                 }
                 $("#orders_table").append(
                     "<tr>" +
@@ -41,4 +49,19 @@ $(() => {
         else
             return null;
     }
+
+    // Delete user
+    function deleteUser(key) {
+            $.ajax(
+            {
+                url: "http:localhost:3001/workorders_delete/"+key,
+                method: 'delete'
+            }).done( (data, status, jqXHR) => {
+                
+            }).fail( (jqXHR, status, errorThrown) => {
+                console.log("Call failed: "+errorThrown);
+            });
+    }
+
+
 });

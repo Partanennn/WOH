@@ -24,6 +24,7 @@ module.exports =
             }
         });
     },
+    
     // Fetch user and password from user table "/users/:tunnus"
     fetchOneUser: (req, res) => {
         var username = req.params.tunnus;
@@ -40,6 +41,7 @@ module.exports =
         );
     },
 
+    // Fetch housing types
     fetchHousingTypes: (req, res) => {
         CONNECTION.query('SELECT * FROM housing_types', 
             (error, result, fields) => {
@@ -54,9 +56,10 @@ module.exports =
         );
     },
 
+    // Fetch all workorders
     fetchWorkorders: (req, res) => {
         let user = req.params.username;
-        CONNECTION.query('SELECT w.order_username, w.work_description, w.orderdate, w.startdate, w.readydate, w.accepteddate, w.denieddate, w.comment_of_work, w.hours, w.approx_budget, s.status FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 
+        CONNECTION.query('SELECT w.id, w.order_username, w.work_description, w.orderdate, w.startdate, w.readydate, w.accepteddate, w.denieddate, w.comment_of_work, w.hours, w.approx_budget, s.status FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 
             (error, results, fields) => {
                 if(error) {
                     console.log("Error while fetching workorders from workorders table, reason: " + error);
@@ -69,6 +72,7 @@ module.exports =
         );
     },
 
+    // Creates user
     createUser: (req, res) => {
         console.log("Body: " + JSON.stringify(req.body));
         let v = req.body;
@@ -86,6 +90,7 @@ module.exports =
         );
     },
 
+    // Updates user
     updateUser: (req, res) => {
         console.log("body: " + JSON.stringify(req.body));
         console.log("params: " + JSON.stringify(req.params));
@@ -105,6 +110,44 @@ module.exports =
                 res.send();
             }
           }
+        );
+    },
+
+    // Deletes workorder
+    deleteWorkorder: (req, res) => {
+        let c = req.body;
+        let key = req.params.id;
+
+        CONNECTION.query('DELETE FROM workorders WHERE id=?', [key], 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while trying to delete data from workorders-table ,reason: "+error);
+                    res.send(error);
+                } else {
+                    console.log("Data deleted from workorders table "+time());
+                    res.statusCode = 204;
+                    res.send();
+                }
+            }
+        );
+    },
+
+    // Deletes user
+    deleteUser: (req, res) => {
+        let c = req.body;
+        let key = req.params.tunnus;
+
+        CONNECTION.query('DELETE FROM users WHERE username=?', [key], 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while trying to delete data from users-table, reason: "+error);
+                    res.send(error);
+                } else {
+                    console.log("Data deleted for user '"+key+"' in users table "+time());
+                    res.statusCode = 204;
+                    res.send();
+                }
+            }
         );
     }
 }

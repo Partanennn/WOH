@@ -7,7 +7,10 @@ $(() => {
             $("#orders_table").empty();
             
             for(var i = 0; i < data.length; i++) {
-            
+                var nappi = "<td></td>";
+                if(data[i].status == "ALOITETTU") {
+                    nappi = "<td><button>Joo</button></td>";
+                }
                 $("#orders_table").append(
                     "<tr>" +
                     "<td>" + data[i].order_username + "</td>"+
@@ -21,6 +24,7 @@ $(() => {
                     "<td>" + data[i].hours + "</td>" +
                     "<td>" + data[i].approx_budget + "</td>" +
                     "<td>" + data[i].status + "</td>" +
+                    nappi +
                     "</tr>"
                 )
             }

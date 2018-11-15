@@ -1,0 +1,14 @@
+#reg_cont {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+}
+
+#reg_2 {
+    margin-left: 3em;
+}
+
+#reg_3 {
+    margin-left: 3em;
+}

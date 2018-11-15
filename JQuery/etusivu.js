@@ -29,12 +29,6 @@ $(() => {
         console.log("Status=" + status + ", " + err);
     });
 
-    $("#user_name").append(
-        "<h4>"+
-        "Hei "+sessionStorage['login_name']+
-        "<h4>"
-    );
-
     // Formats date to dd.MM.YYYY format
     function dateFormatter(date) {
         var d = new Date(date);

@@ -56,7 +56,7 @@ module.exports =
         );
     },
 
-    // Fetch all workorders
+    // Fetch all workorders for one user
     fetchWorkorders: (req, res) => {
         let user = req.params.username;
         CONNECTION.query('SELECT w.id, w.order_username, w.work_description, w.orderdate, w.startdate, w.readydate, w.accepteddate, w.denieddate, w.comment_of_work, w.hours, w.approx_budget, s.status FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 

@@ -64,7 +64,7 @@ INSERT INTO states (status) VALUES("VALMIS");
 INSERT INTO states (status) VALUES("HYVÄKSYTTY");
 INSERT INTO states (status) VALUES("HYLÄTTY");
 INSERT INTO states (status) VALUES("VASTATTU");
-INSERT INTO states (status) VALUES("TARJOUS");
+INSERT INTO states (status) VALUES("JÄTETTY");
 
 INSERT INTO users(username, password, name, visiting_address, role) VALUES('admin', 'admin', 'Super Jumala', 'Jumalainentie 1', 'admin');
 INSERT INTO users(username, password, name, visiting_address, housing) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Minna Canthin katu 1', 1);

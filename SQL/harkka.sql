@@ -19,8 +19,8 @@ CREATE TABLE harkka.users
     phonenumber char(10),
     email varChar(100),
     housing int,
-    house_squares DOUBLE(10,2),
-    building_ground DOUBLE(10,2),
+    house_squares char(10),
+    building_ground char(10),
     CONSTRAINT users_housing_fk FOREIGN KEY (housing) REFERENCES housing_types(id)
 )
 ENGINE = InnoDB;

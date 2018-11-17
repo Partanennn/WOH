@@ -95,7 +95,7 @@ module.exports =
         console.log("Create workorder BODY: "+JSON.stringify(req.body));
         let v = req.body;
 
-        CONNECTION.query('INSERT INTO workorders (order_username, work_description, address, city, orderdate)  VALUES (?, ?, ?, ?, CURDATE())', [ v.add_username, v.add_info, v.add_address, v.add_city], 
+        CONNECTION.query('INSERT INTO workorders (order_username, work_description, address, city, orderdate)  VALUES (?, ?, ?, ?, CURDATE())', [ v.add_username, v.add_info, v.add_address, v.add_city],
             (error, results, fields) => {
                 if(error) {
                     console.log("Error while trying to add new workorder, reason: "+error);

@@ -39,9 +39,9 @@ $(() => {
                     "<tr>" +
                     "<td>" + data[i].order_username + "</td>"+
                     "<td>" + data[i].work_description + "</td>" +
-                    "<td>" + dateFormatter(data[i].orderdate) + "</td>" +
                     "<td>" + data[i].address + "</td>" +
                     "<td>" + data[i].city + "</td>" +
+                    "<td>" + dateFormatter(data[i].orderdate) + "</td>" +
                     "<td>" + dateFormatter(data[i].startdate) + "</td>" +
                     "<td>" + dateFormatter(data[i].readydate) + "</td>" +
                     "<td>" + data[i].comment_of_work + "</td>" +

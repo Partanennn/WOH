@@ -56,6 +56,22 @@ module.exports =
         );
     },
 
+    // Fetch one workorder for edit dialog info
+    fetchWorkorder: (req, res) => {
+        let id = req.params.id;
+        CONNECTION.query('SELECT * FROM workorders WHERE order_id=?', [id], 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Erro while fetching data for edit dialog, reason: "+error);
+                    res.json({"status": 500, "error": error, "response": null});
+                } else {
+                    console.log("Succesfully fetched one workorder for edit dialog, "+results);
+                    res.status(200).json(results);
+                }
+            }
+        );
+    },
+
     // Fetch all workorders for one user
     fetchWorkorders: (req, res) => {
         let user = req.params.username;
@@ -129,6 +145,25 @@ module.exports =
             }
           }
         );
+    },
+
+    // Updates workorder
+    updateWorkorder: (req, res) => {
+        let c = req.body;
+        let key = req.params.id;
+
+        CONNECTION.query('UPDATE workorders SET work_description=?, address=?, city=? WHERE order_id=?', [c.edit_work_desc, c.edit_address, c.edit_city, key], 
+            (error, resilts, fields) => {
+                if(error) {
+                    console.log("Error while trying to update ("+key+") workorder, reason: "+error);
+                    res.send(error);                   
+                } else {
+                    console.log("Data updated for workorder with "+key+" id, "+time());
+                    res.statusCode = 204;
+                    res.send();
+                }
+            }
+        )
     },
 
     // Deletes workorder

@@ -59,7 +59,7 @@ module.exports =
     // Fetch all workorders for one user
     fetchWorkorders: (req, res) => {
         let user = req.params.username;
-        CONNECTION.query('SELECT w.id, w.order_username, w.work_description, w.orderdate, w.startdate, w.readydate, w.accepteddate, w.denieddate, w.comment_of_work, w.hours, w.approx_budget, s.status FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 
+        CONNECTION.query('SELECT * FROM workorders w LEFT JOIN states s ON w.status = s.id WHERE w.order_username=?', [user], 
             (error, results, fields) => {
                 if(error) {
                     console.log("Error while fetching workorders from workorders table, reason: " + error);
@@ -84,6 +84,24 @@ module.exports =
                     res.json(error);
                 } else {
                     console.log("New user added to table users: "+JSON.stringify(results));
+                    res.statusCode = 201;
+                }
+            }
+        );
+    },
+
+    // Creates workorder
+    createWorkorder: (req, res) => {
+        console.log("Create workorder BODY: "+JSON.stringify(req.body));
+        let v = req.body;
+
+        CONNECTION.query('INSERT INTO workorders (order_username, work_description, address, city, orderdate)  VALUES (?, ?, ?, ?, CURDATE())', [ v.add_username, v.add_info, v.add_address, v.add_city], 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while trying to add new workorder, reason: "+error);
+                    res.json(error);
+                } else {
+                    console.log("Added new workorder to workorders table, "+time());
                     res.statusCode = 201;
                 }
             }
@@ -118,7 +136,7 @@ module.exports =
         let c = req.body;
         let key = req.params.username;
 
-        CONNECTION.query('DELETE FROM workorders WHERE id=?', [key], 
+        CONNECTION.query('DELETE FROM workorders WHERE order_id=?', [key], 
             (error, results, fields) => {
                 if(error) {
                     console.log("Error while trying to delete data from workorders-table ,reason: "+error);

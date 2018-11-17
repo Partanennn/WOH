@@ -27,12 +27,14 @@ app.route("/users/:tunnus")
     .put(controller.updateUser)
     .delete(controller.deleteUser)
     .get(controller.fetchOneUser);
+    
+app.route("/workorders")
+    .post(controller.createWorkorder);
 
 app.route("/workorders/:username")
     .get(controller.fetchWorkorders)
     .delete(controller.deleteWorkorder);
 
-app.route("/workorders_delete/:id")
 
 app.route("/housing_types")
     .get(controller.fetchHousingTypes);

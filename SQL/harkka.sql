@@ -70,8 +70,8 @@ INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', '
 INSERT INTO users(username, password, name, visiting_address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Pohjolankatu 43');
 INSERT INTO users(username, password, name, visiting_address) VALUES('ISS', '1234', 'ISS Oy', 'Kaivotie 23');
 
-INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('Aleksi1', 'Tää on testi', CURRENT_DATE(), '2018-11-11', '2018-11-13', 2);
 INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('moi123', 'Ovien maalaaminen', CURDATE(), '2018-11-20', '2018-11-28', 2);
+INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('Aleksi1', 'Tää on testi', CURRENT_DATE(), '2018-11-11', '2018-11-13', 2);
 INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Seinien maalaaminen', CURDATE());
 INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Tää on testi', CURDATE());
 INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Tää on testi', CURDATE());

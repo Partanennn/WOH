@@ -116,7 +116,7 @@ module.exports =
     // Deletes workorder
     deleteWorkorder: (req, res) => {
         let c = req.body;
-        let key = req.params.id;
+        let key = req.params.username;
 
         CONNECTION.query('DELETE FROM workorders WHERE id=?', [key], 
             (error, results, fields) => {

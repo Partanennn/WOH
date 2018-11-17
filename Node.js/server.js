@@ -29,10 +29,10 @@ app.route("/users/:tunnus")
     .get(controller.fetchOneUser);
 
 app.route("/workorders/:username")
-    .get(controller.fetchWorkorders);
+    .get(controller.fetchWorkorders)
+    .delete(controller.deleteWorkorder);
 
 app.route("/workorders_delete/:id")
-    .get(controller.deleteWorkorder);
 
 app.route("/housing_types")
     .get(controller.fetchHousingTypes);

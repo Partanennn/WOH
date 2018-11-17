@@ -34,9 +34,11 @@ ENGINE = InnoDB;
 
 CREATE TABLE harkka.workorders
 (
-    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     order_username varChar(10) NOT NULL,
     work_description varChar(200) NOT NULL,
+    address varChar(100) NOT NULL,
+    city varChar(50) NOT NULL,
     orderdate DATE NOT NULL,
     startdate DATE,
     readydate DATE,
@@ -70,8 +72,8 @@ INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', '
 INSERT INTO users(username, password, name, visiting_address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Pohjolankatu 43');
 INSERT INTO users(username, password, name, visiting_address) VALUES('ISS', '1234', 'ISS Oy', 'Kaivotie 23');
 
-INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('moi123', 'Ovien maalaaminen', CURDATE(), '2018-11-20', '2018-11-28', 2);
-INSERT INTO workorders(order_username, work_description, orderdate, startdate, readydate, status) VALUES('Aleksi1', 'Tää on testi', CURRENT_DATE(), '2018-11-11', '2018-11-13', 2);
-INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Seinien maalaaminen', CURDATE());
-INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Tää on testi', CURDATE());
-INSERT INTO workorders(order_username, work_description, orderdate) VALUES('Aleksi1', 'Tää on testi', CURDATE());
+INSERT INTO workorders(order_username, work_description, address, city, orderdate, startdate, readydate, status) VALUES('moi123', 'Ovien maalaaminen', 'Neulamäentie 23', 'KUOPIO', CURDATE(), '2018-11-20', '2018-11-28', 2);
+INSERT INTO workorders(order_username, work_description, address, city, orderdate, startdate, readydate, status) VALUES('Aleksi1', 'Tää on testi', 'Vuorikatu 20', 'KUOPIO',CURRENT_DATE(), '2018-11-11', '2018-11-13', 2);
+INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Seinien maalaaminen', "Suokatu 23", "KUOPIO", CURDATE());
+INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Tää on testi', 'Pohjolankatu 12', 'IISALMI', CURDATE());
+INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Tää on testi', 'Harrinpolku 3', 'KIURUVESI', CURDATE());

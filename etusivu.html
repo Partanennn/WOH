@@ -69,10 +69,10 @@
                     <th>Tilaaja</th>
                     <th>Työ info</th>
                     <th>Tilauspäivä</th>
+                    <th>Katuosoite</th>
+                    <th>Kaupunki</th>
                     <th>Aloituspäivä</th>
                     <th>Valmistumispäivä</th>
-                    <th>Hyväksymispäivä</th>
-                    <th>Hylkäämispäivä</th>
                     <th>Kommentti tehdystä työstä</th>
                     <th>Käytetty tuntimäärä</th>
                     <th>Kustannusarvio</th>
@@ -82,10 +82,21 @@
 
                 </tbody>
             </table>
-
+            
             <div id="logout_dialog">
                 <p>Haluatko varmasti kirjautua ulos?</p>
             </div>
+        </div>
+        
+        <button id="add_button"><h5>Uusi Tilaus</h5></button>
+
+        <div id="add_dialog" title="Lisää uusi tilaus">
+            <form id="add_form">
+                <input hidden type="text" name="add_username" id="add_username">
+                <input type="text" name="add_info" id="add_info" placeholder="Työ info">
+                <input type="text" name="add_address" id="add_address" placeholder="Katuosoite">
+                <input type="text" name="add_city" id="add_city" placeholder="Kaupunki">
+            </form>
         </div>
 
         <div id="footer" class="panel-footer">

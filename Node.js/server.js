@@ -35,6 +35,9 @@ app.route("/workorders/:username")
     .get(controller.fetchWorkorders)
     .delete(controller.deleteWorkorder);
 
+app.route("/workorder/:id")
+    .put(controller.updateWorkorder)
+    .get(controller.fetchWorkorder);
 
 app.route("/housing_types")
     .get(controller.fetchHousingTypes);

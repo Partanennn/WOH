@@ -7,8 +7,7 @@ $(() => {
                 text: "Tilaa",
                 click: () => {
                     addWorkorder();
-                    alert("Tilaus tehty onnistuneesti!");
-                    $("#add_form").submit();
+                    window.location.href='etusivu.html';
                 }
             },
             {
@@ -77,7 +76,7 @@ $(() => {
                 
                 $(".delete").click(function(){
                     var id = $(this).attr("data-deleteid");
-                    deleteUser(id);
+                    deleteWorkorder(id);
                 })
 
                 $(".edit_button").click(function() {
@@ -91,6 +90,18 @@ $(() => {
     }).fail( (jqXHR, status, err) => {
         console.log("Status=" + status + ", " + err);
     });
+
+    function deleteWorkorder(key) {
+        $.ajax(
+        {
+            url: "http:localhost:3001/workorders/"+key,
+            method: 'delete'
+        }).done( (data, status, jqXHR) => {
+            window.location.href='etusivu.html';
+        }).fail( (jqXHR, status, errorThrown) => {
+            console.log("Call failed: "+errorThrown);
+        });
+}
 
     function saveWorkorder() {
         var descOK, addressOK, cityOK;
@@ -123,7 +134,7 @@ $(() => {
                 url: "http://localhost:3001/workorder/" + workorder_id,
                 method: 'put',
                 data: $("#edit_form").serialize()
-            }).done( (data, status, jqXHR) => {
+            }).done( function(data, status, jqXHR) {
                 window.location.href='etusivu.html';
             }).fail( (jqXHR, status, errorThrown) => {
                 console.log("Ajax put call for workorder did fail, reason: " + errorThrown);

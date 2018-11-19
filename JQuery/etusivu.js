@@ -47,7 +47,8 @@ $(() => {
         "http://localhost:3001/workOrders/"+
         sessionStorage['login_username']
     ).done( (data, status, jqXHR) => {
-        if(data[0].order_username != undefined) {
+        // Checks if data from server is undefined
+        if(data[0] != undefined) {
             // Clears table
             $("#orders_table").empty();
             // Adds head elements for workorders table
@@ -111,7 +112,7 @@ $(() => {
                 }); 
             }
         } else {
-
+            $("#section").append("<h1>Ei tilauksia</h1>");
         }
     }).fail( (jqXHR, status, err) => {
         console.log("Status=" + status + ", " + err);

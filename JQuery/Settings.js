@@ -30,7 +30,7 @@ $(() => {
     $("#update_button").click(() => {
         var nameOK, usernameOK;
 
-        if()
+        if
 
         if(nameOK && usernameOK) {
             $.ajax(

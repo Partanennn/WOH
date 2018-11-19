@@ -56,14 +56,14 @@ $(() => {
         }
 
 
-        if(nameOK == true && usernameOK == true && passOK == true) {
+        if(nameOK && usernameOK && passOK) {
             $('input[id="visitingaddress_reg"], input[id="password2_reg"], input[id="password_reg"], input[id="username_reg"], input[id="name_reg"]').css("border", "none");
             
             // This $.get tries to find username what user did put in textbox, 
             //if response is undefined(=username doesn't exists) then create new user
             $.get("http://localhost:3001/users/"+username
             ).done((data, status, jq) => {
-                // Checks if response is empty, if yes then creates new user
+                // Checks if response is indefined, if yes then creates new user
                 if(data[0] == undefined) {
                     createUser();
                     alert("Rekisteröinti onnistui!");

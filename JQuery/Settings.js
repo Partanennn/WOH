@@ -1,4 +1,5 @@
 $(() => {
+    // Gets housing types from database
     $.get("http://localhost:3001/housing_types")
     .done((data, status, jqXHR) => {
         data.forEach(x => {
@@ -10,6 +11,7 @@ $(() => {
         });
     });
     
+    // Gets user information from database
     $.get("http://localhost:3001/users/"+sessionStorage['login_username'])
     .done((data, status, jqXHR) => {
         $("#name_reg").val(data[0].name);
@@ -24,16 +26,25 @@ $(() => {
 
     });
     
+    // Updates data for user
     $("#update_button").click(() => {
-        $.ajax(
+        var nameOK, usernameOK;
+
+        if()
+
+        if(nameOK && usernameOK) {
+            $.ajax(
             {
                 url: "http://localhost:3001/users/" + sessionStorage['login_username'],
                 method: 'put',
                 data: $("#update_form").serialize()
-            }).done( (data, textStatus, jqXHR) => {
+            }
+            ).done( (data, textStatus, jqXHR) => {
                 window.location.href='asetukset.html';
-            }).fail( (jqXHR, textStatus, errorThrown) => {
+            }
+            ).fail( (jqXHR, textStatus, errorThrown) => {
                 console.log("Ajax put-call did fail, reason: " + errorThrown);
             });
+        }
     });
 });

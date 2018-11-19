@@ -6,7 +6,7 @@ $(() => {
     //
     //
     //  Tallennus
-    //  Poisto
+    //  Poisto VALMIS
     //  Muokkaus
     //  Hyväksyminen
     //  Hylkääminen
@@ -19,13 +19,14 @@ $(() => {
     $.get(
         "http://localhost:3001/workOrders/"+
         sessionStorage['login_username']
-    ).done((data, status, jqXHR) => {
+    )
+    .done((data, status, jqXHR) => {
         var emptyTable = true;
         $.each(data, (i, data) => {
             var button = "";
             if(data.status == "JÄTETTY" || data.status == "VASTATTU" || data.status == "HYVÄKSYTTY" || data.status == "HYLÄTTY") {
-                if(emptyTable = true) {
-                    $("#workorders_table").append(
+                if(emptyTable) {
+                    $("#offers_table").append(
                         "<thead>" + 
                         "<th>Tilaaja</th>" +
                         "<th>Työ info</th>" +
@@ -82,14 +83,16 @@ $(() => {
                     var id = $(this).attr('data-editid');
                     workorder_id = id;
                     editWorkorder(id);
-                });
+                }); 
             }
         });
-        if(emptyTable = true) {
-            $("#section").append("<h1>Ei tarjouspyyntöjä</h1>");
 
+        // Checks if user haves any offers
+        if(emptyTable) {
+            $("#section").append("<h1>Ei tarjouspyyntöjä</h1>");
         }
-    }).fail( (jqXHR, status, err) => {
+    }
+    ).fail( (jqXHR, status, err) => {
         console.log("Status=" + status + ", " + err);
     });
 
@@ -99,9 +102,11 @@ $(() => {
         {
             url: "http:localhost:3001/workorders/"+key,
             method: 'delete'
-        }).done( (data, status, jqXHR) => {
-            window.location.href='etusivu.html';
-        }).fail( (jqXHR, status, errorThrown) => {
+        }
+        ).done( (data, status, jqXHR) => {
+            window.location.href='tarjouspyynto.html';
+        }
+        ).fail( (jqXHR, status, errorThrown) => {
             console.log("Call failed: "+errorThrown);
         });
     }
@@ -112,7 +117,8 @@ $(() => {
         $.get(
             "http://localhost:3001/workorder/"+
             id
-        ).done( (data, status, jqXHR) => {
+        )
+        .done( (data, status, jqXHR) => {
             $("#edit_work_desc").val( data[0].work_description );
             $("#edit_address").val( data[0].address );
             $("#edit_city").val( data[0].city );

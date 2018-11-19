@@ -74,6 +74,7 @@ INSERT INTO users(username, password, name, visiting_address) VALUES('ISS', '123
 
 INSERT INTO workorders(order_username, work_description, address, city, orderdate, startdate, readydate, status) VALUES('moi123', 'Ovien maalaaminen', 'Neulamäentie 23', 'KUOPIO', CURDATE(), '2018-11-20', '2018-11-28', 2);
 INSERT INTO workorders(order_username, work_description, address, city, orderdate, startdate, readydate, status) VALUES('Aleksi1', 'Tää on testi', 'Vuorikatu 20', 'KUOPIO',CURRENT_DATE(), '2018-11-11', '2018-11-13', 2);
+INSERT INTO workorders(order_username, work_description, address, city, orderdate, status) VALUES('Aleksi1', 'Seinien maalaaminen', "Suokatu 23", "KUOPIO", CURDATE(), 7);
 INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Seinien maalaaminen', "Suokatu 23", "KUOPIO", CURDATE());
 INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Tää on testi', 'Pohjolankatu 12', 'IISALMI', CURDATE());
 INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Tää on testi', 'Harrinpolku 3', 'KIURUVESI', CURDATE());

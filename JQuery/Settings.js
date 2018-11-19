@@ -28,11 +28,17 @@ $(() => {
     
     // Updates data for user
     $("#update_button").click(() => {
-        var nameOK, usernameOK;
+        var nameOK;
 
-        if
+        if( $("#name_reg").val() == "" ) {
+            nameOK = false;
+            $('input[id=name_reg]').css("border", "2px solid red");
+        } else {
+            nameOK = true;
+            $('input[id=name_reg]').css("border", "");
+        }
 
-        if(nameOK && usernameOK) {
+        if(nameOK) {
             $.ajax(
             {
                 url: "http://localhost:3001/users/" + sessionStorage['login_username'],
@@ -45,6 +51,45 @@ $(() => {
             ).fail( (jqXHR, textStatus, errorThrown) => {
                 console.log("Ajax put-call did fail, reason: " + errorThrown);
             });
+        } else if(warnings == 0) {
+            alert("Nimi kenttä ei voi olla tyhjä!!");
+            warnings = 1;
+        } else {
+            alert("Nimi kenttä ei vieläkään voi olla tyhjä, täytä se!!");
         }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var warnings = 0;
 });

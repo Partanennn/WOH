@@ -75,6 +75,7 @@ $(() => {
                 if(data[i].status == "TILATTU") {
                     button = "<td><button class='edit_button' data-editid="+ data[i].order_id +">Muokkaa</button></td><td><button class='delete' data-deleteid="+ data[i].order_id +">Poista</button></td>";
                 }
+                if(data[i].status == "TILATTU" || data[i].staus == "ALOITETTU" || data[i].staus == "VALMIS")
                 // Adds new row to workorders table with workorder data
                 $("#workorders_table").append(
                     "<tr>" +

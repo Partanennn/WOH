@@ -100,7 +100,7 @@ $(() => {
                 $(".delete").click(function(){
                     var id = $(this).attr("data-deleteid");
                     deleteWorkorder(id);
-                })
+                });
 
                 // Opens dialog and calls editWorkorder and pass order_id to function to get info of workorder,
                 // Is added to every edit button

@@ -80,10 +80,10 @@ $(() => {
     function createUser() {
         var addons = $("#register_form").serialize();
         $.post(
-            "http://localhost:3001/create_user", 
+            "http://localhost:3001/users", 
             addons
         ).done ( (data, status, jqxhr) => {
-
+            
         }).fail( (jqxhr, status, error) => {
             console.log("status= "+status+", error: "+error);
         });

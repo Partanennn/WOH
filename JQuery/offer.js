@@ -1,21 +1,7 @@
 $(() => {
-    //
-    //
-    //
-    //
-    //
-    //
-    //  Tallennus
-    //  Poisto VALMIS
-    //  Muokkaus
-    //  Hyväksyminen
-    //  Hylkääminen
-    //
-    //
-    //
-    //
-    //
-    //
+    // Makes table full workorders with status JÄTETTY, VASTATTU, HYVÄKSYTTY, HYLÄTTY,
+    // if user doesn't have any orders with those statuses, 
+    // then writes EI TARJOUSPYYNTÖJÄ on screen
     $.get(
         "http://localhost:3001/workOrders/"+
         sessionStorage['login_username']
@@ -96,6 +82,57 @@ $(() => {
         console.log("Status=" + status + ", " + err);
     });
 
+
+
+
+
+    $("#edit_dialog").dialog({
+        autoOpen: false,
+        buttons: [
+            {
+                text: "Tallenna",
+                click: () => {
+                    saveWorkorder();
+                }
+            },
+            {
+                text: "Peruuta",
+                click: function() {
+                    $(this).dialog("close");
+                }
+            }
+        ]
+    });
+
+    $("#add_dialog").dialog({
+        autoOpen: false,
+        buttons: [
+            {
+                text: "Tallenna",
+                click: () => {
+                    addWorkorder();
+                    window.location.href="tarjouspyynto.html";
+                }
+            },
+            {
+                text: "Peruuta",
+                // Have to use this basic javascript function to use this notation,
+                // won't work with ES6 arrow function
+                click: function() {
+                    $(this).dialog("close");
+                }
+            }
+        ]
+    });
+
+    $("#add_button").click(() => {
+        $("#add_dialog").dialog("open");
+    });
+
+
+
+
+
     // Deletes workorder from workorders table, "refresh" page
     function deleteWorkorder(key) {
         $.ajax(
@@ -109,6 +146,46 @@ $(() => {
         ).fail( (jqXHR, status, errorThrown) => {
             console.log("Call failed: "+errorThrown);
         });
+    }
+
+    // Checks if textboxes are empty, if not then adds new workorder to workorders table
+    function addWorkorder() {
+        var infoOK, addressOK, cityOK;
+        if($("#add_info").val() == "") {
+            infoOK = false;
+            $('input[id=add_info]').css("border", "2px solid red");
+        } else {
+            infoOK = true;
+            $('input[id=add_info]').css("border", "");
+        }
+
+        if($("#add_address").val() == "") {
+            addressOK = false;
+            $('input[id=add_address]').css("border", "2px solid red");
+        } else {
+            addressOK = true;
+            $('input[id=add_address]').css("border", "");
+        }
+
+        if($("#add_city").val() == "") {
+            cityOK = false;
+            $('input[id=add_city]').css("border", "2px solid red");
+        } else {
+            cityOK = true;
+            $('input[id=add_city]').css("border", "");
+        }
+
+        if(infoOK && addressOK && cityOK) {
+            var info = $("#add_form").serialize();
+            $.post(
+                "http://localhost:3001/workorders",
+                info
+            ).done((data, status, jqXHR) => {
+
+            }).fail((jqXHR, status, errorThrown) => {
+                console.log("Status= " + status + ", " + errorThrown);
+            });
+        }
     }
 
     // Gets workorder info for edit dialog
@@ -126,6 +203,50 @@ $(() => {
 
     }
 
+    // Checks if edit workorder textboxes are empty, if not then updates workorder and "refresh" page
+    function saveWorkorder() {
+        var descOK, addressOK, cityOK;
+        if($("#edit_work_desc").val() == "") {
+            $('input[id=edit_work_desc]').css("border", "2px solid red");
+            descOK = false;
+        } else {
+            $('input[id=edit_work_desc]').css("border", "");
+            descOK = true;
+        }
+
+        if($("#edit_address").val() == "") {
+            $('input[id=edit_address]').css("border", "2px solid red");
+            addressOK = false;
+        } else {
+            $('input[id=edit_address]').css("border", "");
+            addressOK = true;
+        }
+
+        if($("#edit_city").val() == ""){
+            $('input[id=edit_city]').css("border", "2px solid red");
+            cityOK = false;
+        } else {
+            $('input[id=edit_city]').css("border", "");
+            cityOK = true;
+        }
+
+        if(descOK && addressOK && cityOK) {
+            $.ajax({
+                url: "http://localhost:3001/workorder/" + workorder_id,
+                method: 'put',
+                data: $("#edit_form").serialize()
+            }).done( function(data, status, jqXHR) {
+                window.location.href='tarjouspyynto.html';
+            }).fail( (jqXHR, status, errorThrown) => {
+                console.log("Ajax put call for workorder did fail, reason: " + errorThrown);
+            });
+        }
+    }
+    
+    
+    
+    
+    
     // Formats date to dd.MM.YYYY format
     function dateFormatter(date) {
         var d = new Date(date);
@@ -134,4 +255,8 @@ $(() => {
         else
         return null;
     }
+
+    // Adds username and status to hidden input box
+    $("#add_status").val(7);
+    $("#add_username").val(sessionStorage['login_username']);    
 });

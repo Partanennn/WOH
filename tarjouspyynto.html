@@ -74,15 +74,21 @@
         
         <button id="add_button"><h5>Uusi Tarjous-</h5><h5>pyyntö</h5></button>
 
-        <div id="add_dialog" title="Lisää uusi tilaus">
+        <div id="add_dialog" title="Lisää uusi tarjouspyyntö">
             <form id="add_form">
-                
+                <input hidden type="text" name="add_username" id="add_username">
+                <input hidden type="text" name="add_status" id="add_status">
+                <input type="text" name="add_info" id="add_info" placeholder="Työ info">
+                <input type="text" name="add_address" id="add_address" placeholder="Katuosoite">
+                <input type="text" name="add_city" id="add_city" placeholder="Kaupunki">
             </form>
         </div>
         
         <div id="edit_dialog" title="Muokkaa tilausta">
             <form id="edit_form">
-                
+                <input type="text" id="edit_work_desc" name="edit_work_desc" placeholder="Työ info">
+                <input type="text" id="edit_address" name="edit_address" placeholder="Katuosoite">
+                <input type="text" id="edit_city" name="edit_city" placeholder="Kaupunki">
             </form>
         </div>
 

@@ -237,4 +237,5 @@ $(() => {
     
     // Adds username to hidden input box
     $("#add_username").val(sessionStorage['login_username']);
-    });
+    $("#add_username").val(1);
+});

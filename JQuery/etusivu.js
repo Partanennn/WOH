@@ -47,15 +47,37 @@ $(() => {
         "http://localhost:3001/workOrders/"+
         sessionStorage['login_username']
     ).done( (data, status, jqXHR) => {
-        if(data[0].order_username != undefined) {
+        // Checks if data from server is undefined
+        if(data[0] != undefined) {
+            // Clears table
             $("#orders_table").empty();
+            // Adds head elements for workorders table
+            $("#workorders_table").append(
+                "<thead>" + 
+                "<th>Tilaaja</th>" +
+                "<th>Työ info</th>" +
+                "<th>Katuosoite</th>" +
+                "<th>Kaupunki</th>" +
+                "<th>Tilauspäivä</th>" +
+                "<th>Aloituspäivä</th>" +
+                "<th>Valmistumispäivä</th>" +
+                "<th>Kommentti tehdystä työstä</th>" +
+                "<th>Käytetty tuntimäärä</th>" +
+                "<th>Kustannusarvio</th>" +
+                "<th>Tarvikkeet</th>" +
+                "<th>Status</th>" +
+                "</thead>" +
+                "<tbody>"
+            );
             for(var i = 0; i < data.length; i++) {
                 var button = "";
+                // Adds edit and delete buttons for each row which have status as "TILATTU"
                 if(data[i].status == "TILATTU") {
                     button = "<td><button class='edit_button' data-editid="+ data[i].order_id +">Muokkaa</button></td><td><button class='delete' data-deleteid="+ data[i].order_id +">Poista</button></td>";
                 }
-                
-                $("#orders_table").append(
+                if(data[i].status == "TILATTU" || data[i].status == "ALOITETTU" || data[i].status == "VALMIS")
+                // Adds new row to workorders table with workorder data
+                $("#workorders_table").append(
                     "<tr>" +
                     "<td>" + data[i].order_username + "</td>"+
                     "<td>" + data[i].work_description + "</td>" +
@@ -72,13 +94,17 @@ $(() => {
                     button + 
                     "</tr>"
                 )
+                // Closes table body
+                $("#workorders_table").append("</tbody>");
                     
-                
+                // Calls deleteWorkorder and pass order_id to function, this is added to every delete button
                 $(".delete").click(function(){
                     var id = $(this).attr("data-deleteid");
                     deleteWorkorder(id);
-                })
+                });
 
+                // Opens dialog and calls editWorkorder and pass order_id to function to get info of workorder,
+                // Is added to every edit button
                 $(".edit_button").click(function() {
                     $("#edit_dialog").dialog("open");
                     var id = $(this).attr('data-editid');
@@ -86,11 +112,14 @@ $(() => {
                     editWorkorder(id);
                 }); 
             }
+        } else {
+            $("#section").append("<h1>Ei tilauksia</h1>");
         }
     }).fail( (jqXHR, status, err) => {
         console.log("Status=" + status + ", " + err);
     });
 
+    // Deletes workorder from workorders table, "refresh" page
     function deleteWorkorder(key) {
         $.ajax(
         {
@@ -101,8 +130,9 @@ $(() => {
         }).fail( (jqXHR, status, errorThrown) => {
             console.log("Call failed: "+errorThrown);
         });
-}
+    }
 
+    // Checks if edit workorder textboxes are empty, if not then updates workorder and "refresh" page
     function saveWorkorder() {
         var descOK, addressOK, cityOK;
         if($("#edit_work_desc").val() == "") {
@@ -142,6 +172,7 @@ $(() => {
         }
     }
 
+    // Gets workorder info for edit dialog
     function editWorkorder(id) {
         
         $.get(
@@ -164,7 +195,7 @@ $(() => {
         return null;
     }
 
-
+    // Checks if textboxes are empty, if not then adds new workorder to workorders table
     function addWorkorder() {
         var infoOK, addressOK, cityOK;
         if($("#add_info").val() == "") {
@@ -206,4 +237,5 @@ $(() => {
     
     // Adds username to hidden input box
     $("#add_username").val(sessionStorage['login_username']);
-    });
+    $("#add_status").val(1);
+});

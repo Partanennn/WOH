@@ -65,7 +65,22 @@ module.exports =
                     console.log("Erro while fetching data for edit dialog, reason: "+error);
                     res.json({"status": 500, "error": error, "response": null});
                 } else {
-                    console.log("Succesfully fetched one workorder for edit dialog, "+results);
+                    console.log("Succesfully fetched one workorder, "+time());
+                    res.status(200).json(results);
+                }
+            }
+        );
+    },
+
+    // Fetch all workorders
+    fetchAllWorkorders: (req, res) => {
+        CONNECTION.query('SELECT * FROM workorders w LEFT JOIN states s ON w.status = s.id', 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while fetching all workorders, reason: "+error);
+                    res.json({"status": 500, "error": error, "response": null});
+                } else {
+                    console.log("Succesfully fteched all workorders, "+time());
                     res.status(200).json(results);
                 }
             }
@@ -111,7 +126,7 @@ module.exports =
         console.log("Create workorder BODY: "+JSON.stringify(req.body));
         let v = req.body;
 
-        CONNECTION.query('INSERT INTO workorders (order_username, work_description, address, city, orderdate)  VALUES (?, ?, ?, ?, CURDATE())', [ v.add_username, v.add_info, v.add_address, v.add_city],
+        CONNECTION.query('INSERT INTO workorders (order_username, work_description, address, city, orderdate, status)  VALUES (?, ?, ?, ?, CURDATE(), ?)', [ v.add_username, v.add_info, v.add_address, v.add_city, v.add_status],
             (error, results, fields) => {
                 if(error) {
                     console.log("Error while trying to add new workorder, reason: "+error);

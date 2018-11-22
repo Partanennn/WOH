@@ -29,6 +29,7 @@ app.route("/users/:tunnus")
     .get(controller.fetchOneUser);
     
 app.route("/workorders")
+    .get(controller.fetchAllWorkorders)
     .post(controller.createWorkorder);
 
 app.route("/workorders/:username")

@@ -17,8 +17,8 @@ body {
 */
 #grid {
     display: grid;
-    grid-template-rows: 1fr 4fr;   /*repeat(30, 2fr)*/
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 120px 4fr;   /*repeat(30, 2fr)*/
+    grid-template-columns: 1fr 4fr;
     grid-gap: .8em .5em;
     grid-auto-flow: row;
     text-align: center;

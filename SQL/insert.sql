@@ -11,6 +11,7 @@ INSERT INTO states (status) VALUES("VASTATTU");
 INSERT INTO states (status) VALUES("JÄTETTY");
 
 INSERT INTO users(username, password, name, visiting_address, role) VALUES('admin', 'admin', 'Super Jumala', 'Jumalainentie 1', 'admin');
+INSERT INTO users(username, password, name, visiting_address, role) VALUES('Yritys123', '123', 'Yritys oy', 'Yritystie 1', 'corp');
 INSERT INTO users(username, password, name, visiting_address, housing) VALUES('Aleksi1', 'Aleksi2', 'Aleksi Partanen', 'Minna Canthin katu 1', 1);
 INSERT INTO users(username, password, name, visiting_address) VALUES('moi123', 'moi1', 'Jonne Jokunen', 'Mannerheiminkatu 23');
 INSERT INTO users(username, password, name, visiting_address) VALUES('Super23456', 'SuperPassword123', 'Jorma Penttinen', 'Pohjolankatu 43');

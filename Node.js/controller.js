@@ -65,7 +65,22 @@ module.exports =
                     console.log("Erro while fetching data for edit dialog, reason: "+error);
                     res.json({"status": 500, "error": error, "response": null});
                 } else {
-                    console.log("Succesfully fetched one workorder for edit dialog, "+results);
+                    console.log("Succesfully fetched one workorder, "+time());
+                    res.status(200).json(results);
+                }
+            }
+        );
+    },
+
+    // Fetch all workorders
+    fetchAllWorkorders: (req, res) => {
+        CONNECTION.query('SELECT * FROM workorders w LEFT JOIN states s ON w.status = s.id', 
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while fetching all workorders, reason: "+error);
+                    res.json({"status": 500, "error": error, "response": null});
+                } else {
+                    console.log("Succesfully fteched all workorders, "+time());
                     res.status(200).json(results);
                 }
             }

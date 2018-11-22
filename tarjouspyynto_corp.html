@@ -20,7 +20,7 @@
     <script src="JQuery/username_appear.js"></script>
     <script src="JQuery/Logout.js"></script>
     <script src="JQuery/Logged.js"></script>
-    <script src="JQuery/etusivu_corp.js"></script>
+    <script src="JQuery/offer.js"></script>
 
     <title>Harkkatyö</title>
 
@@ -56,8 +56,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="nav">
                     <li><a id="logout_button" href="javascript:undefined">Kirjaudu Ulos</a></li>
-                    <li><a class="current" href="etusivu_corp.html">Tilaukset</a></li>
-                    <li><a href="tarjouspyynto_corp.html">Tarjouspyynnöt</a></li>
+                    <li><a href="etusivu_corp.html">Tilaukset</a></li>
+                    <li><a class="current" href="#">Tarjouspyynnöt</a></li>
                 </ul>
             </div>
             
@@ -65,7 +65,7 @@
 
         <div id="section">
             <div id="table_div">
-                <table id="workorders_table" class="table-striped">
+                <table id="offers_table" class="table-striped">
                 </table>
             </div>
             
@@ -74,12 +74,12 @@
             </div>
         </div>
         
-        <button id="add_button"><h5>Uusi Tilaus</h5></button>
+        <button id="add_button"><h5>Uusi Tarjous-</h5><h5>pyyntö</h5></button>
 
-        <div id="add_dialog" title="Lisää uusi tilaus">
+        <div id="add_dialog" title="Lisää uusi tarjouspyyntö">
             <form id="add_form">
-                <input hidden type="text" name="add_status" id="add_status">
                 <input hidden type="text" name="add_username" id="add_username">
+                <input hidden type="text" name="add_status" id="add_status">
                 <input type="text" name="add_info" id="add_info" placeholder="Työ info">
                 <input type="text" name="add_address" id="add_address" placeholder="Katuosoite">
                 <input type="text" name="add_city" id="add_city" placeholder="Kaupunki">

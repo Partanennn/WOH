@@ -20,7 +20,7 @@
     <script src="JQuery/username_appear.js"></script>
     <script src="JQuery/Logout.js"></script>
     <script src="JQuery/Logged.js"></script>
-    <script src="JQuery/offer.js"></script>
+    <script src="JQuery/offer_corp.js"></script>
 
     <title>Harkkatyö</title>
 
@@ -83,14 +83,16 @@
                 <input type="text" name="add_info" id="add_info" placeholder="Työ info">
                 <input type="text" name="add_address" id="add_address" placeholder="Katuosoite">
                 <input type="text" name="add_city" id="add_city" placeholder="Kaupunki">
+                
             </form>
         </div>
         
         <div id="edit_dialog" title="Muokkaa tilausta">
             <form id="edit_form">
-                <input type="text" id="edit_work_desc" name="edit_work_desc" placeholder="Työ info">
-                <input type="text" id="edit_address" name="edit_address" placeholder="Katuosoite">
-                <input type="text" id="edit_city" name="edit_city" placeholder="Kaupunki">
+                <input readonly type="text" id="edit_work_desc" name="edit_work_desc" placeholder="Työ info">
+                <input readonly type="text" id="edit_address" name="edit_address" placeholder="Katuosoite">
+                <input readonly type="text" id="edit_city" name="edit_city" placeholder="Kaupunki">
+                <input type="text" id="edit_money" name="edit_money" placeholder="Kustannusarvio">
             </form>
         </div>
 

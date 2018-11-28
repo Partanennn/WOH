@@ -22,7 +22,8 @@ INSERT INTO workorders(order_username, work_description, address, city, orderdat
 INSERT INTO workorders(order_username, work_description, address, city, orderdate, status) VALUES('Aleksi1', 'Seinien maalaaminen', "Kuopiolahdenkatu 23", "KUOPIO", CURDATE(), 7);
 INSERT INTO workorders(order_username, work_description, address, city, orderdate, status) VALUES('Aleksi1', 'Oven avaus', "Vuorikatu 23", "KUOPIO", CURDATE(), 7);
 INSERT INTO workorders(order_username, work_description, address, city, orderdate, status) VALUES('Aleksi1', 'Lehtien puhallus', "Suokatu 23", "KUOPIO", CURDATE(), 7);
-INSERT INTO workorders(order_username, work_description, address, city, orderdate, status) VALUES('Aleksi1', 'Lipun nostaminen', "Savilahdenkatu 21", "KUOPIO", CURDATE(), 7);
+INSERT INTO workorders(order_username, work_description, address, city, orderdate, answerdate, status) VALUES('moi123', 'Lipun nostaminen', "Savilahdenkatu 21", "KUOPIO", CURDATE(), '2018-11-24', 4);
+INSERT INTO workorders(order_username, work_description, address, city, orderdate, answerdate, status) VALUES('Aleksi1', 'Lipun nostaminen', "Savilahdenkatu 21", "KUOPIO", CURDATE(), '2018-11-24', 5);
 INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Seinien maalaaminen', "Lönnrootinkatu 1", "KUOPIO", CURDATE());
 INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Tää on testi', 'Pohjolankatu 12', 'IISALMI', CURDATE());
 INSERT INTO workorders(order_username, work_description, address, city, orderdate) VALUES('Aleksi1', 'Tää on testi', 'Harrinpolku 3', 'KIURUVESI', CURDATE());

@@ -35,8 +35,7 @@ $(document).ready(() => {
                         sessionStorage['login_name'] = data[0].name;
                         sessionStorage['login_username'] = data[0].username;
                         sessionStorage['login_role'] = data[0].role;
-                        if(data[0].role == "user") window.location.href = 'etusivu.html';
-                        else if(data[0].role == "corp" ) window.location.href = 'etusivu_corp.html';
+                        window.location.href = 'etusivu.html';
                     }
                 })
                 .fail( (error) => {

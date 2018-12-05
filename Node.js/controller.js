@@ -80,7 +80,7 @@ module.exports =
                     console.log("Error while fetching all workorders, reason: "+error.sqlMessage);
                     res.json({"status": 500, "error": error, "response": null});
                 } else {
-                    console.log("Succesfully fteched all workorders, "+time());
+                    console.log("Succesfully fetched all workorders, "+time());
                     res.status(200).json(results);
                 }
             }
@@ -160,6 +160,23 @@ module.exports =
             }
           }
         );
+    },
+
+    updateOffer: (req, res) => {
+        let c = req.body;
+        let key = req.params.tunnus;
+
+        CONNECTION.query('UPDATE workorders SET approx_budget=?, status=6 WHERE order_id=?', [c.price, key],
+            (error, results, fields) => {
+                if(error) {
+                    console.log("Error while trying to update ("+key+") workorder, reason: "+error.sqlMessage);
+                    req.send(error);
+                } else {
+                    console.log("Data updated for workorder with "+key+" id, "+time());
+                    res.statusCode = 204;
+                    res.send();
+                }
+            });
     },
 
     // Updates workorder

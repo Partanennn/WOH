@@ -15,7 +15,6 @@ $(() => {
                     if(emptyTable) {
                         $("#offers_table").append(
                             "<thead>" + 
-                            "<th>Tilaaja</th>" +
                             "<th>Työ info</th>" +
                             "<th>Katuosoite</th>" +
                             "<th>Kaupunki</th>" +
@@ -39,7 +38,6 @@ $(() => {
     
                     $("#offers_table").append(
                         "<tr>" +
-                        "<td>" + data.order_username + "</td>"+
                         "<td>" + data.work_description + "</td>" +
                         "<td>" + data.address + "</td>" +
                         "<td>" + data.city + "</td>" +
@@ -82,6 +80,14 @@ $(() => {
         ).fail( (jqXHR, status, err) => {
             console.log("Status=" + status + ", " + err);
         });
+
+    //
+    //
+    //  
+    //  ADMIN
+    //
+    //
+    //     
     } else {
         $.get(
             "http://localhost:3001/workOrders/"
@@ -169,15 +175,25 @@ $(() => {
         autoOpen: false,
         buttons: [
             {
-                text: "Hyväksy",
+                text: "Vastaa",
                 click: () => {
-
-                }
-            },
-            {
-                text: "Hylkää",
-                click: () => {
-
+                    $.ajax({
+                        url: "http://localhost:3001/workorders/offer/" + workorder_id,
+                        method: 'put',
+                        data: $("#admin_edit_form").serialize()
+                    }
+                    ).done( function(data, status, jqXHR) {
+                        if(jqXHR.status == 204) {
+                            alert("Tiedot päivitetty onnistuneesti!");
+                            window.location.href='tarjouspyynto.html';
+                        } else {
+                            alert("Jotain meni pieleen!");
+                        }
+                    }
+                    ).fail( (jqXHR, status, errorThrown) => {
+                        console.log("Ajax put call for workorder did fail, reason: " + errorThrown);    
+                        alert("Fail");
+                    })
                 }
             },
             {

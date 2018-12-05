@@ -32,6 +32,10 @@ app.route("/workorders")
     .get(controller.fetchAllWorkorders)
     .post(controller.createWorkorder);
 
+app.route("/workorders/offer/:tunnus")
+    .put(controller.updateOffer)
+    .get(controller.fetchOneUser);
+
 app.route("/workorders/:username")
     .get(controller.fetchWorkorders)
     .delete(controller.deleteWorkorder);
